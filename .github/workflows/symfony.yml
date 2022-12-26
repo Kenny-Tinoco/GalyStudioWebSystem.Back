@@ -11,6 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install composer
       - uses: actions/checkout@v2
+      - name: Install composer
         run: composer install
