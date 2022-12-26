@@ -3,8 +3,9 @@ name: symfony
 on:
   push:
     branches:
-    -develop
-    -master
+    - "develop"
+    - 'release-*.*'
+    - "master"
 
 
 jobs:
