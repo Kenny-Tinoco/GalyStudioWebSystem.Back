@@ -1,0 +1,11 @@
+name: SonarCloud Dev-Ops
+on:
+  push:
+    branches: ['develop', 'release-*']
+jobs:
+  devops:
+    name: Test - SonarCloud Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with: {fetch-depth: 0}
