@@ -1,0 +1,11 @@
+name: symfony
+
+on:
+  push:
+    branches:
+    -develop
+    -'release-*.*'
+    -master
+
+permissions:
+  contents: read
