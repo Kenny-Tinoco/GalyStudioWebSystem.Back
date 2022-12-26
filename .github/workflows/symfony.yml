@@ -13,3 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install composer
         run: composer install
+
+      - name: Run phpstan
+        run: ./vendor/bin/phpstan analyse src --level 5
