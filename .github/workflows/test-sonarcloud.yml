@@ -1,4 +1,4 @@
-name: SonarCloud Dev-Ops
+name: SonarCloud Test
 on:
   push:
     branches: ['develop', 'release-*']
