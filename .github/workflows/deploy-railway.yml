@@ -1,15 +1,16 @@
 name: Railway CI
 on:
   push:
-    branches: [master]
+    branches: ['master']
 jobs:
   deploy:
+    name: Railway
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
       - uses: actions/checkout@v2
-        with: {fetch-depth: 0}
-
+        with:
+          fetch-depth: 0
       - name: Install Railway
         run: npm i -g @railway/cli
 

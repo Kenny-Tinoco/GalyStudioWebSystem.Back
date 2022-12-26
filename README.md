@@ -4,6 +4,6 @@
 ![Build](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/symfony.yml/badge.svg?branch=develop)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Kenny-Tinoco/GalyStudioWebSystem.Back?branch=develop)](https://bettercodehub.com/)
 =======
-# GalyStudioWebSystem.Back
+## Galy Studio Web System Backend
 
 Sistema web para el control de servicios del estudio de maquillaje Galy Studio, aplicación del lado del servidor.
