@@ -9,8 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with: {fetch-depth: 0}
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Run SonarCloud scan
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.projectKey=Kenny-Tinoco_GalyStudioWebSystem.Back
+          -Dsonar.organization=jt-software
+          -Dsonar.sources=src
+          -Dsonar.language=php
+          -Dsonar.sourceEncoding=UTF-8
+          -Dsonar.exclusions=vendor/*
+          -Dsonar.verbose=true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
