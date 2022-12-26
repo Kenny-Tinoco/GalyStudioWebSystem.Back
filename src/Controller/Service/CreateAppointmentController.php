@@ -4,14 +4,7 @@ namespace App\Controller\Service;
 
 class CreateAppointmentController
 {
-
-
-
-
-
-
-
-
+ 
 	public function __construct()
 	{
 		// ...

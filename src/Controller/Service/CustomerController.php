@@ -2,6 +2,8 @@
 
 namespace App\Controller\Service;
 
+use App\Controller\UserController;
+
 class CustomerController extends UserController
 {
 

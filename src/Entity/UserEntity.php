@@ -11,8 +11,6 @@ class UserEntity
 
 	protected  $password;
 
-
-
 	public function __construct()
 	{
 		// ...

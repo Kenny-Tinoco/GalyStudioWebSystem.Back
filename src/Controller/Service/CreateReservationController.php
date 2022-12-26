@@ -4,13 +4,6 @@ namespace App\Controller\Service;
 
 class CreateReservationController
 {
-
-
-
-
-
-
-
 	public function __construct()
 	{
 		// ...
