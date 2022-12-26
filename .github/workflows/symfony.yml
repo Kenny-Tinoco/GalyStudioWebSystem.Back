@@ -1,4 +1,4 @@
-name: symfony
+name: Symfony Configurations
 
 on:
   push:
