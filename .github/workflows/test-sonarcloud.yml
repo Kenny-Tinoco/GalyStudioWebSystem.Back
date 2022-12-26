@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
         with: {fetch-depth: 0}
       - name: Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@master
         with:
           args: >
           -Dsonar.projectKey=Kenny-Tinoco_GalyStudioWebSystem.Back
