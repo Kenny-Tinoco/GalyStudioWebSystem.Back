@@ -2,15 +2,29 @@
 
 namespace App\Controller\Common;
 
-class LoginController
-{
-	public function __construct()
-	{
-		// ...
-	}
+use App\Entity\UserEntities;
+use Symfony\Component\Routing\Annotation\Route;
 
-	public function login( $user)
+class LoginController extends BaseController
+{
+    private $session;
+    
+	public function __construct($session)
 	{
+        $this->session = $session;
+	}
+    
+    #[Route('/login', name: 'login')]
+	public function login($user)
+	{
+        $userEntities = new UserEntities();
+        $result = $userEntities->findByUsername($user->username);
+        
+        if($result == null)
+            return false;
+        
+        $this->session->setUser($user);
+        return true;
 	}
 
 	public function createAccount( $user)
@@ -19,10 +33,12 @@ class LoginController
 
 	public function isLoggedOut()
 	{
+        return $this->session->getUser() == null;
 	}
 
 	public function changePassword( $user,  $newPassword)
 	{
+ 
 	}
 
 }

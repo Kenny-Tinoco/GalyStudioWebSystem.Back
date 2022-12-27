@@ -4,24 +4,21 @@ namespace App\Entity;
 
 class SessionEntity
 {
-
-	private  $user;
-
-
+	private $user;
 
 	public function __construct()
 	{
-		// ...
+		$this->user = new UserEntity();
 	}
 
 	public function getUser()
-	{
-		// TODO implement here
+    {
+        return $this->user;
 	}
 
-	public function setUser( $user)
-	{
-		// TODO implement here
+	public function setUser($user)
+    {
+        $this->user = $user;
 	}
 
 }

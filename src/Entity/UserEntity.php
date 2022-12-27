@@ -5,30 +5,34 @@ namespace App\Entity;
 class UserEntity
 {
 
-	protected  $userId;
+	protected $userId;
 
-	protected  $username;
+	protected $username;
 
-	protected  $password;
+	protected $password;
+ 
 
 	public function __construct()
 	{
-		// ...
 	}
 
 	public function getUsername()
 	{
-		// TODO implement here
+		return $this->username;
 	}
 
 	public function getPassword()
 	{
-		// TODO implement here
+        return $this->password;
 	}
 
-	public function verifyPassword( $password)
+	public function verifyPassword($password)
 	{
-		// TODO implement here
+		return $this->password == $password;
 	}
-
+    
+    public function getUserId()
+    {
+        return $this->userId;
+    }
 }
