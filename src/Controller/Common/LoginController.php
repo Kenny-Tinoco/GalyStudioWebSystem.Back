@@ -2,20 +2,22 @@
 
 namespace App\Controller\Common;
 
+use App\Entity\SessionEntity;
 use App\Entity\UserEntities;
+use App\Entity\UserEntity;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends BaseController
 {
     private $session;
     
-	public function __construct($session)
+	public function __construct()
 	{
-        $this->session = $session;
+        $this->session = new SessionEntity();
 	}
     
     #[Route('/login', name: 'login')]
-	public function login($user)
+	public function login( $user)
 	{
         $userEntities = new UserEntities();
         $result = $userEntities->findByUsername($user->username);
