@@ -2,32 +2,32 @@
 
 namespace App\Entity;
 
-class UserEntity
+class UserEntity extends BaseEntity
 {
 
-	protected $userId;
+	protected int $userId;
 
-	protected $username;
+	protected string $username;
 
-	protected $password;
+	protected string $password;
  
 
-	public function getUsername()
+	public function getUsername() : string
 	{
 		return $this->username;
 	}
 
-	public function getPassword()
+	public function getPassword() : string
 	{
         return $this->password;
 	}
 
-	public function verifyPassword($password) : bool
+	public function verifyPassword(string $password) : bool
 	{
 		return $this->password == $password;
 	}
     
-    public function getUserId()
+    public function getUserId() : int
     {
         return $this->userId;
     }
