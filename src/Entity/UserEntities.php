@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+
 class UserEntities extends ElementEntities
 {
 
-	public function findByUsername($username)
+	public function findByUsername($username) : UserEntity
 	{
         return new UserEntity();
 	}

@@ -12,10 +12,6 @@ class UserEntity
 	protected $password;
  
 
-	public function __construct()
-	{
-	}
-
 	public function getUsername()
 	{
 		return $this->username;
@@ -26,7 +22,7 @@ class UserEntity
         return $this->password;
 	}
 
-	public function verifyPassword($password)
+	public function verifyPassword($password) : bool
 	{
 		return $this->password == $password;
 	}

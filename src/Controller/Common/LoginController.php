@@ -4,12 +4,11 @@ namespace App\Controller\Common;
 
 use App\Entity\SessionEntity;
 use App\Entity\UserEntities;
-use App\Entity\UserEntity;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends BaseController
 {
-    private $session;
+    private SessionEntity $session;
     
 	public function __construct()
 	{
@@ -17,12 +16,12 @@ class LoginController extends BaseController
 	}
     
     #[Route('/login', name: 'login')]
-	public function login( $user)
+	public function login($user) : bool
 	{
         $userEntities = new UserEntities();
         $result = $userEntities->findByUsername($user->username);
         
-        if($result == null)
+        if(is_null($user))
             return false;
         
         $this->session->setUser($user);
@@ -32,10 +31,11 @@ class LoginController extends BaseController
 	public function createAccount( $user)
 	{
 	}
-
-	public function isLoggedOut()
+    
+    #[Route('/isLoggedOut', name: 'isLoggedOut')]
+	public function isLoggedOut() : bool
 	{
-        return $this->session->getUser() == null;
+        return $this->session->isLoggedOut();
 	}
 
 	public function changePassword( $user,  $newPassword)
