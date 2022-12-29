@@ -4,7 +4,7 @@ namespace App\Entity;
 
 class SessionEntity
 {
-	private ?UserEntity $user;
+	private UserEntity $user;
  
 	public function __construct(?UserEntity $user)
     {
@@ -16,11 +16,9 @@ class SessionEntity
         return $this->user;
 	}
 
-	public function setUser(UserEntity $user) : self
+	public function setUser(UserEntity $user) : void
     {
         $this->user = $user;
-        
-        return $this;
 	}
     
     public function isLoggedOut() : bool

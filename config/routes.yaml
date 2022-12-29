@@ -5,3 +5,11 @@ app_loginController-login:
 app_loginController-isLoggedOut:
     path: /api/isLoggedOut
     controller: App\Controller\Common\LoginController::isLoggedOut
+
+app_loginController-createAccount:
+        path: /api/createAccount
+        controller: App\Controller\Common\LoginController::createAccount
+
+app_loginController-changePassword:
+    path: /api/changePassword
+    controller: App\Controller\Common\LoginController::changePassword

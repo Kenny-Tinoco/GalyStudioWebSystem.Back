@@ -12,7 +12,7 @@ class UserEntities
         return true;
     }
     
-	public function findByUsername(string $username) : UserEntity
+	public function findByUsername(string $username) : ?UserEntity
 	{
         return new UserEntity();
 	}
