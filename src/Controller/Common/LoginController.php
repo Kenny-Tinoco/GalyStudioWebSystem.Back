@@ -2,45 +2,42 @@
 
 namespace App\Controller\Common;
 
-use App\Entity\SessionEntity;
-use App\Entity\UserEntities;
 use App\Entity\UserEntity;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UserEntities;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LoginController extends BaseController
 {
-    private SessionEntity $session;
-    
-	public function __construct()
+
+	public function login($userName) : JsonResponse
 	{
-        $this->session = new SessionEntity();
-	}
-    
-    #[Route('/login', name: 'login')]
-	public function login(UserEntity $user) : bool
-	{
-        $userEntities = new UserEntities();
-        $result = $userEntities->findByUsername($user->getUsername());
         
-        $this->session->setUser($result);
-        
-        return true;
+        return new JsonResponse
+        (
+            ['result' => $userName]
+        );
 	}
 
 	public function createAccount(UserEntity $user) : bool
 	{
-        return true;
+        $userEntities = new UserEntities();
+        return $userEntities->create($user);
 	}
-    
-    #[Route('/isLoggedOut', name: 'isLoggedOut')]
-	public function isLoggedOut() : bool
+ 
+	public function isLoggedOut() : JsonResponse
 	{
-        return $this->session->isLoggedOut();
+        return new JsonResponse
+        (
+            ['status' => 'Ok']
+        );
 	}
 
-	public function changePassword(UserEntity $user, string $newPassword) : void
+	public function changePassword(UserEntity $user, string $newPassword) : JsonResponse
 	{
- 
+        return new JsonResponse
+        (
+            ['result' => 'Todo ok']
+        );
 	}
 
 }

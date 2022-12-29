@@ -4,11 +4,11 @@ namespace App\Entity;
 
 class SessionEntity
 {
-	private UserEntity $user;
-
-	public function __construct()
-	{
-		$this->user = new UserEntity();
+	private ?UserEntity $user;
+ 
+	public function __construct(?UserEntity $user)
+    {
+        $this->user = $user ? : new UserEntity();
 	}
 
 	public function getUser() : UserEntity
@@ -16,13 +16,15 @@ class SessionEntity
         return $this->user;
 	}
 
-	public function setUser(UserEntity $user) : void
+	public function setUser(UserEntity $user) : self
     {
         $this->user = $user;
+        
+        return $this;
 	}
     
     public function isLoggedOut() : bool
     {
-        return empty($this->user->getUsername()) || empty($this->user->getPassword());
+        return (bool)$this -> user;
     }
 }

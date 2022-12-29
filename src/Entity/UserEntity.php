@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class UserEntity extends BaseEntity
+class UserEntity
 {
 
 	protected int $userId;
