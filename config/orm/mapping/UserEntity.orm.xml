@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\UserEntity" table="User">
+        <id name="userId" type="integer"/>
+        <field name="userName" length="255"/>
+        <field name="password" length="255"/>
+
+        <many-to-many field="roles" target-entity="App\Entity\RoleEntity" inversed-by="users">
+            <join-table name="UserRole">
+                <join-columns>
+                    <join-column name="user_id" referenced-column-name="userId"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="role_id" referenced-column-name="roleId"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

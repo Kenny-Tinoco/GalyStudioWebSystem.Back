@@ -2,19 +2,32 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class UserEntity
 {
 
-	protected int $userId;
+	private int $userId;
 
-	protected string $username;
+	private string $userName;
 
-	protected string $password;
+	private string $password;
+    
+    private Collection $roles;
  
-
-	public function getUsername() : string
+    public function __construct()
+    {
+        $this->userId = 0;
+        $this->userName = "";
+        $this->password = "";
+        
+        $this->roles = new ArrayCollection();
+    }
+    
+    public function getUserName() : string
 	{
-		return $this->username;
+		return $this->userName;
 	}
 
 	public function getPassword() : string
@@ -30,5 +43,10 @@ class UserEntity
     public function getUserId() : int
     {
         return $this->userId;
+    }
+    
+    public function getRoles() : Collection
+    {
+        return $this->roles;
     }
 }
