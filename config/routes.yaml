@@ -1,15 +1,18 @@
-app_loginController-login:
+# format: app.controller.method
+
+# Login Controller
+app.loginController.login:
     path: /api/login/{userName}
     controller: App\Controller\Common\LoginController::login
 
-app_loginController-isLoggedOut:
+app.loginController.isLoggedOut:
     path: /api/isLoggedOut
     controller: App\Controller\Common\LoginController::isLoggedOut
 
-app_loginController-createAccount:
+app.loginController.createAccount:
         path: /api/createAccount
         controller: App\Controller\Common\LoginController::createAccount
 
-app_loginController-changePassword:
+app.loginController.changePassword:
     path: /api/changePassword
     controller: App\Controller\Common\LoginController::changePassword
