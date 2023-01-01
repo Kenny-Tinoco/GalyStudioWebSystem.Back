@@ -1,3 +1,4 @@
+
 ## Sistema web para el control de servicios
 > Este proyecto es parte de la asignatura de Ingeniería de Software de la carrera de Ingeniería en Computación.
 
@@ -13,4 +14,4 @@ Sistema web para el control de servicios del estudio de maquillaje Galy Studio, 
 
 ## Ecosistema
 
-`PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `BetterCodeHub` `Railway`  
+`PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `Railway`  
