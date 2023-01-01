@@ -9,7 +9,7 @@ class UserEntities extends BaseRepository
 {
     public function create(UserEntity $user) : void
     {
-        $this->create($user);
+        $this->saveEntity($user);
     }
     
 	public function findByUsername(string $username) : ?UserEntity

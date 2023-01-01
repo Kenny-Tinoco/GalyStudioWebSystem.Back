@@ -4,18 +4,19 @@ namespace App\Controller\Common;
 
 use App\Entity\UserEntity;
 use App\Entity\SessionEntity;
+use App\HTTP\Response\ApiResponse;
 use App\Repository\UserEntities;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends BaseController
 {
     private SessionEntity $sessionEntity;
-    private UserEntities $userEntities;
     
-    public function __construct(SessionEntity $sessionEntity, UserEntities $userEntities)
+    public function __construct(private UserEntities $userEntities)
     {
-        $this->sessionEntity = $sessionEntity;
         $this->userEntities = $userEntities;
+        $this->sessionEntity = new SessionEntity();
     }
 
 	public function login($userName) : JsonResponse
@@ -36,15 +37,17 @@ class LoginController extends BaseController
             ['result' => 'ok']
         );
 	}
+ 
 
-	public function createAccount(UserEntity $user) : JsonResponse
+	public function createAccount(Request $request) : JsonResponse
 	{
+        $data = \json_decode($request->getContent(), true);
+        
+        $user = new UserEntity($data['userName'], $data['password']);
+        
         $this->userEntities->create($user);
         
-        return new JsonResponse
-        (
-            ['result' => true]
-        );
+        return $this->createResponse( ['user' => $user->toArray()], ApiResponse::HTTP_OK);
 	}
  
 	public function isLoggedOut() : JsonResponse
