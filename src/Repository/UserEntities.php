@@ -4,26 +4,20 @@ namespace App\Repository;
 
 
 use App\Entity\UserEntity;
-use Doctrine\ORM\Exception\ORMException;
 
 class UserEntities extends BaseRepository
 {
-    public function create(UserEntity $user) : bool
+    public function create(UserEntity $user) : void
     {
-        try
-        {
-            $this->create($user);
-            return true;
-        }
-        catch (ORMException $e)
-        {
-            return false;
-        }
+        $this->saveEntity($user);
     }
     
 	public function findByUsername(string $username) : ?UserEntity
 	{
-        return $this->objectRepository->find(1);
+        $query = $this->getEntityManager()->createQuery('SELECT u FROM App\Entity\UserEntity u WHERE u.userName = :userName');
+        $query->setParameter('userName', $username);
+        
+        return $query->getOneOrNullResult();
 	}
     
     protected static function entityClass(): string

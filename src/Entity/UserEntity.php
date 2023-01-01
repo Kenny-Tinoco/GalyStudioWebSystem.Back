@@ -10,17 +10,17 @@ class UserEntity
 
 	private int $userId;
 
-	private string $userName;
+	private ?string $userName;
 
-	private string $password;
+	private ?string $password;
     
     private Collection $roles;
  
-    public function __construct()
+    public function __construct(string $userName = null, string $password = null)
     {
         $this->userId = 0;
-        $this->userName = "";
-        $this->password = "";
+        $this->userName = $userName;
+        $this->password = $password;
         
         $this->roles = new ArrayCollection();
     }
@@ -48,5 +48,15 @@ class UserEntity
     public function getRoles() : Collection
     {
         return $this->roles;
+    }
+    
+    public function toArray() : array
+    {
+        return
+        [
+            'userId' => $this->userId,
+            'userName' => $this->userName,
+            'password' => $this->password
+        ];
     }
 }

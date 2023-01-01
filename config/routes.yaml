@@ -5,14 +5,11 @@ app.loginController.login:
     path: /api/login/{userName}
     controller: App\Controller\Common\LoginController::login
 
-app.loginController.isLoggedOut:
-    path: /api/isLoggedOut
-    controller: App\Controller\Common\LoginController::isLoggedOut
-
 app.loginController.createAccount:
-        path: /api/createAccount
-        controller: App\Controller\Common\LoginController::createAccount
+    path: /api/create-account
+    controller: App\Controller\Common\LoginController::createAccount
+    methods: [ POST ]
 
 app.loginController.changePassword:
-    path: /api/changePassword
+    path: /api/change-password
     controller: App\Controller\Common\LoginController::changePassword

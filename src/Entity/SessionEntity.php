@@ -6,7 +6,7 @@ class SessionEntity
 {
 	private UserEntity $user;
  
-	public function __construct(?UserEntity $user)
+	public function __construct(UserEntity $user = null)
     {
         $this->user = $user ? : new UserEntity();
 	}
