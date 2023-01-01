@@ -22,6 +22,8 @@ class LoginController extends BaseController
     {
         $user = $this->userEntities->findByUsername($userName);
         
+        # $this->userEntities->
+        
         if(is_null($user))
         {
             return new JsonResponse([ 'result' => 'failed' ]);
@@ -37,11 +39,11 @@ class LoginController extends BaseController
 
 	public function createAccount(UserEntity $user) : JsonResponse
 	{
-        $result = $this->userEntities->create($user);
+        $this->userEntities->create($user);
         
         return new JsonResponse
         (
-            ['result' => $result]
+            ['result' => true]
         );
 	}
  
