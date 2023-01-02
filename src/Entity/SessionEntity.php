@@ -8,7 +8,7 @@ class SessionEntity
  
 	public function __construct(UserEntity $user = null)
     {
-        $this->user = $user ? : new UserEntity();
+        $this->user = $user ? : new UserEntity("", "");
 	}
 
 	public function getUser() : UserEntity

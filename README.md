@@ -6,7 +6,7 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kenny-Tinoco_GalyStudioWebSystem.Back&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Kenny-Tinoco_GalyStudioWebSystem.Back)
 ![Build](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/symfony.yml/badge.svg?branch=develop)
-[![BCH compliance](https://bettercodehub.com/edge/badge/Kenny-Tinoco/GalyStudioWebSystem.Back?branch=develop)](https://bettercodehub.com/)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2ff2ef66025b4f30998ee56f2eab927f)](https://www.codacy.com/gh/Kenny-Tinoco/GalyStudioWebSystem.Back/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kenny-Tinoco/GalyStudioWebSystem.Back&amp;utm_campaign=Badge_Grade)
 
 ## Galy Studio Web System Backend
 
@@ -14,4 +14,4 @@ Sistema web para el control de servicios del estudio de maquillaje Galy Studio, 
 
 ## Ecosistema
 
-`PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `Railway`  
+`PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `Codacy`  
