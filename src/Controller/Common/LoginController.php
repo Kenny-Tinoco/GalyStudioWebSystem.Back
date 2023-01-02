@@ -12,8 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 class LoginController extends BaseController
 {
     private SessionEntity $sessionEntity;
+    private UserEntities $userEntities;
     
-    public function __construct(private UserEntities $userEntities)
+    public function __construct(UserEntities $userEntities)
     {
         $this->userEntities = $userEntities;
         $this->sessionEntity = new SessionEntity();
@@ -22,8 +23,6 @@ class LoginController extends BaseController
 	public function login($userName) : JsonResponse
     {
         $user = $this->userEntities->findByUsername($userName);
-        
-        # $this->userEntities->
         
         if(is_null($user))
         {
