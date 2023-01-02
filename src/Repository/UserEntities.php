@@ -14,7 +14,8 @@ class UserEntities extends BaseRepository
     
 	public function findByUsername(string $username) : ?UserEntity
 	{
-        $query = $this->getEntityManager()->createQuery('SELECT u FROM App\Entity\UserEntity u WHERE u.userName = :userName');
+        $queryString = 'SELECT u FROM App\Entity\UserEntity u WHERE u.userName = :userName';
+        $query = $this->getEntityManager()->createQuery($queryString);
         $query->setParameter('userName', $username);
         
         return $query->getOneOrNullResult();

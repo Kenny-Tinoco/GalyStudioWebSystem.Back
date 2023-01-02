@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="App\Entity\UserEntity" table="User">
-        <id name="userId" type="integer"/>
+        <id name="userId" column="userId" type="string" column-definition="CHAR(36) NOT NULL"/>
         <field name="userName" length="255"/>
         <field name="password" length="255"/>
 
         <many-to-many field="roles" target-entity="App\Entity\RoleEntity" inversed-by="users">
             <join-table name="UserRole">
                 <join-columns>
-                    <join-column name="user_id" referenced-column-name="userId"/>
+                    <join-column name="user_id" referenced-column-name="userId" column-definition="CHAR(36) NOT NULL"/>
                 </join-columns>
                 <inverse-join-columns>
                     <join-column name="role_id" referenced-column-name="roleId"/>

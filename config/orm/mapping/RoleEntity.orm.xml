@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
     <entity name="App\Entity\RoleEntity" table="Role">
-        <id name="roleId" type="integer"/>
+        <id name="roleId" column="roleId" type="integer"/>
         <field name="name" length="25"/>
         <field name="description" length="100"/>
 

@@ -2,23 +2,23 @@
 
 namespace App\Entity;
 
+use App\Utils\UID;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class UserEntity
 {
+	private string $userId;
 
-	private int $userId;
+	private string $userName;
 
-	private ?string $userName;
-
-	private ?string $password;
+	private string $password;
     
     private Collection $roles;
  
-    public function __construct(string $userName = null, string $password = null)
+    public function __construct(string $userName, string $password)
     {
-        $this->userId = 0;
+        $this->userId = UID::generateId();
         $this->userName = $userName;
         $this->password = $password;
         
@@ -40,7 +40,7 @@ class UserEntity
 		return $this->password == $password;
 	}
     
-    public function getUserId() : int
+    public function getUserId() : string
     {
         return $this->userId;
     }
