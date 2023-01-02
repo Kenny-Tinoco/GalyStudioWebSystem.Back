@@ -7,9 +7,11 @@ use App\Entity\UserEntity;
 
 class UserEntities extends BaseRepository
 {
-    public function create(UserEntity $user) : void
+    public function create(UserEntity $user) : UserEntity
     {
         $this->saveEntity($user);
+        
+        return $user;
     }
     
 	public function findByUsername(string $username) : ?UserEntity

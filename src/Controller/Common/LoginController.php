@@ -43,9 +43,9 @@ class LoginController extends BaseController
 	{
         $data = \json_decode($request->getContent(), true);
         
-        $user = new UserEntity($data['userName'], $data['password']);
+        $element = new UserEntity($data['userName'], $data['password']);
         
-        $this->userEntities->create($user);
+        $user = $this->userEntities->create($element);
         
         return $this->createResponse( ['user' => $user->toArray()], ApiResponse::HTTP_OK);
 	}

@@ -13,24 +13,17 @@ use Doctrine\Persistence\ObjectRepository;
 abstract class BaseRepository
 {
     protected ObjectRepository $objectRepository;
-    protected ManagerRegistry $managerRegistry;
+    private EntityManagerInterface $entityManager;
     
-    public function __construct(ManagerRegistry $managerRegistry, public Connection $connection)
+    public function __construct(EntityManagerInterface $entityManager, public Connection $connection)
     {
-        $this->managerRegistry = $managerRegistry;
+        $this->entityManager = $entityManager;
         $this->objectRepository = $this->getEntityManager()->getRepository($this->entityClass());
     }
     
-    protected function getEntityManager() : EntityManager | ObjectManager
+    protected function getEntityManager() : EntityManagerInterface
     {
-        $entityManager = $this->managerRegistry->getManager();
-        
-        if ($entityManager->isOpen())
-        {
-            return $entityManager;
-        }
-        
-        return $this->managerRegistry->resetManager();
+        return $this->entityManager;
     }
     
     abstract protected static function entityClass() : string;
