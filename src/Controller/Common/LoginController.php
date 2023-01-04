@@ -3,11 +3,9 @@
 namespace App\Controller\Common;
 
 use App\Dao\Repository\UserRepository;
+use App\Dto\UserDto;
 use App\Entity\SessionEntity;
 use App\Entity\UserEntity;
-use App\HTTP\Response\ApiResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends BaseController
 {
@@ -35,32 +33,19 @@ class LoginController extends BaseController
 	}
  
 
-	public function createAccount(Request $request) : JsonResponse
+	public function createAccount(UserDto $userDto) : bool
 	{
-        $data = \json_decode($request->getContent(), true);
-        
-        $element = new UserEntity($data['userName'], $data['password']);
-        
-        $user = $this->userEntities->create($element);
-        
-        return $this->createResponse( ['user' => $user->toArray()], ApiResponse::HTTP_OK);
+        return true;
 	}
  
-	public function isLoggedOut() : JsonResponse
+	public function isLoggedOut() : bool
 	{
-        return new JsonResponse
-        (
-            ['status' => $this->sessionEntity->isLoggedOut()]
-        );
+        return true;
 	}
 
-	public function changePassword(UserEntity $user, string $newPassword) : JsonResponse
+	public function changePassword(UserEntity $user, string $newPassword) : bool
 	{
-        
-        return new JsonResponse
-        (
-            ['result' => 'Todo ok']
-        );
+        return true;
 	}
 
 }
