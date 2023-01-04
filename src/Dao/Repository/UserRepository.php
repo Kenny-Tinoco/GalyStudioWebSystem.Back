@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repository;
+namespace App\Dao\Repository;
 
 
 use App\Entity\UserEntity;
 
-class UserEntities extends BaseRepository
+class UserRepository extends BaseRepository
 {
     public function create(UserEntity $user) : UserEntity
     {

@@ -2,19 +2,19 @@
 
 namespace App\Controller\Common;
 
-use App\Entity\UserEntity;
+use App\Dao\Repository\UserRepository;
 use App\Entity\SessionEntity;
+use App\Entity\UserEntity;
 use App\HTTP\Response\ApiResponse;
-use App\Repository\UserEntities;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends BaseController
 {
     private SessionEntity $sessionEntity;
-    private UserEntities $userEntities;
+    private UserRepository $userEntities;
     
-    public function __construct(UserEntities $userEntities)
+    public function __construct(UserRepository $userEntities)
     {
         $this->userEntities = $userEntities;
         $this->sessionEntity = new SessionEntity();
