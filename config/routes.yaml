@@ -2,16 +2,16 @@
 
 # Login Resource
 app.loginResource.login:
-    path: /api/login
+    path: /api/v1/login
     controller: App\ApiResource\LoginResource::login
     methods: [ GET ]
 
 app.loginResource.createAccount:
-    path: /api/create-account
+    path: /api/v1/create-account
     controller: App\ApiResource\LoginResource::createAccount
     methods: [ POST ]
 
 app.loginResource.changePassword:
-    path: /api/change-password
+    path: /api/v1/change-password
     controller: App\ApiResource\LoginResource::changePassword
     methods: [ GET ]

@@ -3,6 +3,7 @@
 namespace App\ApiResource;
 
 use App\Controller\Common\LoginController;
+use App\Dto\FactoryUserDto;
 use App\Dto\UserDto;
 use App\HTTP\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,10 +12,12 @@ use Symfony\Component\HttpFoundation\Request;
 class LoginResource extends BaseResource
 {
     private LoginController $loginController;
+    private FactoryUserDto $factoryUserDto;
     
-    public function __construct(LoginController $loginController)
+    public function __construct(LoginController $loginController, FactoryUserDto $factoryUserDto)
     {
         $this->loginController = $loginController;
+        $this->factoryUserDto = $factoryUserDto;
     }
     
     public function login(Request $request) : JsonResponse
@@ -30,15 +33,16 @@ class LoginResource extends BaseResource
     {
         $data = \json_decode($request->getContent(), true);
         
-        return $this->createResponse( ['result ' => true], ApiResponse::HTTP_OK);
+        $dto = $this->factoryUserDto->getUserDTO($data);
+        
+        $result = $this->loginController->createAccount($dto);
+        
+        return $this->createResponse( ['result ' => $result], ApiResponse::HTTP_OK);
     }
     
     
     public function changePassword(Request $request) : JsonResponse
     {
-        return new JsonResponse
-        (
-            ['result' => 'Todo ok']
-        );
+        return $this->createResponse( ['result ' => true], ApiResponse::HTTP_OK);
     }
 }
