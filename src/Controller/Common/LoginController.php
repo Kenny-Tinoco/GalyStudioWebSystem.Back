@@ -20,21 +20,18 @@ class LoginController extends BaseController
         $this->sessionEntity = new SessionEntity();
     }
 
-	public function login($userName) : JsonResponse
+	public function login($userName) : bool
     {
         $user = $this->userEntities->findByUsername($userName);
         
         if(is_null($user))
         {
-            return new JsonResponse([ 'result' => 'failed' ]);
+            return false;
         }
         
         $this->sessionEntity->setUser($user);
         
-        return new JsonResponse
-        (
-            ['result' => 'ok']
-        );
+        return true;
 	}
  
 

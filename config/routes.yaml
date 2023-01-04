@@ -1,9 +1,9 @@
-# format: app.controller.method
+# format: app.resource.method
 
-# Login Controller
+# Login Resource
 app.loginController.login:
-    path: /api/login/{userName}
-    controller: App\Controller\Common\LoginController::login
+    path: /api/login
+    controller: App\ApiResource\LoginResource::login
 
 app.loginController.createAccount:
     path: /api/create-account

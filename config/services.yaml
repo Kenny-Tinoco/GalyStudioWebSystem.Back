@@ -20,8 +20,8 @@ services:
             - '../src/Kernel.php'
             - '../src/Entity/'
 
-    App\Controller\:
-        resource: '../src/Controller'
+    App\ApiResource\:
+        resource: '../src/ApiResource'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
