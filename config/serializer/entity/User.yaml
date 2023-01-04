@@ -4,3 +4,5 @@ App\Entity\UserEntity:
       groups: ['user']
     userName:
       groups: ['user']
+    password:
+      groups: ['user']
