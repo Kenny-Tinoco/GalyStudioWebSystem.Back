@@ -1,0 +1,17 @@
+# format: app.resource.method
+
+# Login Resource
+app.loginResource.login:
+  path: /login
+  controller: App\ApiResource\LoginResource::login
+  methods: [ GET ]
+
+app.loginResource.createAccount:
+  path: /create-account
+  controller: App\ApiResource\LoginResource::createAccount
+  methods: [ POST ]
+
+app.loginResource.changePassword:
+  path: /change-password
+  controller: App\ApiResource\LoginResource::changePassword
+  methods: [ GET ]

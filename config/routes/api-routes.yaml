@@ -1,0 +1,2 @@
+login:
+  resource: 'api-routes/login-routes.yaml'

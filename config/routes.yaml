@@ -1,17 +1,3 @@
-# format: app.resource.method
-
-# Login Resource
-app.loginResource.login:
-    path: /api/v1/login
-    controller: App\ApiResource\LoginResource::login
-    methods: [ GET ]
-
-app.loginResource.createAccount:
-    path: /api/v1/create-account
-    controller: App\ApiResource\LoginResource::createAccount
-    methods: [ POST ]
-
-app.loginResource.changePassword:
-    path: /api/v1/change-password
-    controller: App\ApiResource\LoginResource::changePassword
-    methods: [ GET ]
+api-galy-studio:
+    resource: 'routes/api-routes.yaml'
+    prefix: '/api/v1'
