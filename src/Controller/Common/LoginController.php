@@ -3,7 +3,7 @@
 namespace App\Controller\Common;
 
 use App\Dao\Repository\UserRepository;
-use App\Dto\UserDto;
+use App\DTO\UserDto;
 use App\Entity\SessionEntity;
 use App\Entity\UserEntity;
 

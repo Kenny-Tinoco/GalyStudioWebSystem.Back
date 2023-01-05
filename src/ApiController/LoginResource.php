@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ApiResource;
+namespace App\ApiController;
 
 use App\Controller\Common\LoginController;
-use App\Dto\FactoryUserDto;
+use App\DTO\FactoryUserDto;
 use App\HTTP\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
