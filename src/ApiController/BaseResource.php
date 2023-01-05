@@ -2,7 +2,7 @@
 
 namespace App\ApiController;
 
-use App\HTTP\Response\ApiResponse;
+use App\Http\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BaseResource
