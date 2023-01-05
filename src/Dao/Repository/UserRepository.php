@@ -2,7 +2,6 @@
 
 namespace App\Dao\Repository;
 
-
 use App\Entity\UserEntity;
 
 class UserRepository extends BaseRepository
@@ -21,7 +20,7 @@ class UserRepository extends BaseRepository
         $query->setParameter('userName', $username);
         
         return $query->getOneOrNullResult();
-	}
+    }
     
     protected static function entityClass(): string
     {

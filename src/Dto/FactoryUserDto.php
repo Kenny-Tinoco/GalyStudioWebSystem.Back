@@ -4,8 +4,8 @@ namespace App\Dto;
 
 class FactoryUserDto
 {
-    public function getUserDTO(Array $data) : UserDto
+    public function getUserDTO(array $data) : UserDto
     {
-        return new UserDto(null, $data);
+        return new UserDto($data);
     }
 }
