@@ -1,0 +1,8 @@
+App\Dto\UserDto:
+  attributes:
+    userId:
+      groups: ['user']
+    userName:
+      groups: ['user']
+    password:
+      groups: ['user']

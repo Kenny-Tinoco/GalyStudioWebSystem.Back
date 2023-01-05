@@ -31,7 +31,6 @@ class LoginResource extends BaseResource
     public function createAccount(Request $request) : JsonResponse
     {
         $data = \json_decode($request->getContent(), true);
-        
         $dto = $this->factoryUserDto->getUserDTO($data);
         
         $result = $this->loginController->createAccount($dto);
