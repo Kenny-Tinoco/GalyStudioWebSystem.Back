@@ -9,7 +9,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kenny-Tinoco_GalyStudioWebSystem.Back&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Kenny-Tinoco_GalyStudioWebSystem.Back)
 ![Build](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/symfony.yml/badge.svg?branch=develop)
 ![DevOps](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/test-sonarcloud.yml/badge.svg)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2ff2ef66025b4f30998ee56f2eab927f)](https://www.codacy.com/gh/Kenny-Tinoco/GalyStudioWebSystem.Back/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kenny-Tinoco/GalyStudioWebSystem.Back&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2ff2ef66025b4f30998ee56f2eab927f)](https://www.codacy.com/gh/Kenny-Tinoco/galy-studio-web-system.back/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kenny-Tinoco/galy-studio-web-system.back&amp;utm_campaign=Badge_Grade)
 
 ## Galy Studio Web System Backend
 
