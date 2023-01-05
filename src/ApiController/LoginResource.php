@@ -3,7 +3,7 @@
 namespace App\ApiController;
 
 use App\Controller\Common\LoginController;
-use App\DTO\FactoryUserDto;
+use App\Dto\FactoryUserDto;
 use App\HTTP\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
