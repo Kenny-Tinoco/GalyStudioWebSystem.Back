@@ -7,7 +7,7 @@ use App\Dto\UserDto;
 use App\Entity\SessionEntity;
 use App\Entity\UserEntity;
 
-class LoginController extends BaseController
+class LoginController
 {
     private SessionEntity $sessionEntity;
     private UserRepository $userEntities;

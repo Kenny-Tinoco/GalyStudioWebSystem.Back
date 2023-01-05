@@ -7,22 +7,18 @@ use Doctrine\Common\Collections\Collection;
 
 class RoleEntity
 {
-   private int $roleId;
-   
-   private string $name;
-   
-   private string $description;
-   
-   private Collection $users;
-   
-   
-   public function __construct()
-   {
-       $this->roleId = 0;
-       $this->name = "";
-       $this->description = "";
-       $this->users = new ArrayCollection();
-   }
+    private int $roleId;
+    private string $name;
+    private string $description;
+    private Collection $users;
+    
+    public function __construct()
+    {
+       $this -> roleId = 0;
+       $this -> name = "";
+       $this -> description = "";
+       $this -> users = new ArrayCollection();
+    }
     
     public function getRoleId(): int
     {
@@ -43,5 +39,4 @@ class RoleEntity
     {
         return $this -> users;
     }
-    
 }
