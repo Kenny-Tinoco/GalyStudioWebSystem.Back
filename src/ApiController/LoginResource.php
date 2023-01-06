@@ -3,7 +3,7 @@
 namespace App\ApiController;
 
 use App\Controller\Common\LoginController;
-use App\Dto\FactoryUserDto;
+use App\Dto\UserDto;
 use App\Http\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,12 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 class LoginResource extends BaseResource
 {
     private LoginController $loginController;
-    private FactoryUserDto $factoryUserDto;
     
-    public function __construct(LoginController $loginController, FactoryUserDto $factoryUserDto)
+    public function __construct(LoginController $loginController)
     {
         $this->loginController = $loginController;
-        $this->factoryUserDto = $factoryUserDto;
     }
     
     public function login(Request $request) : JsonResponse
@@ -28,12 +26,8 @@ class LoginResource extends BaseResource
         return $this->createResponse(['result' => $result], ApiResponse::HTTP_OK);
     }
     
-    public function createAccount(Request $request) : JsonResponse
+    public function createAccount(UserDto $dto) : JsonResponse
     {
-        $data = \json_decode($request->getContent(), true);
-        
-        $dto = $this->factoryUserDto->getUserDTO($data);
-        
         $result = $this->loginController->createAccount($dto);
         
         return $this->createResponse(['result ' => $result], ApiResponse::HTTP_OK);

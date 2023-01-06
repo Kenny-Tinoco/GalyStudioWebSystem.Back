@@ -2,7 +2,10 @@
 
 namespace App\Dto;
 
-class UserDto
+use App\Http\Dto\RequestDto;
+use Symfony\Component\HttpFoundation\Request;
+
+class UserDto implements RequestDto
 {
     public readonly string $userId;
     
@@ -12,11 +15,11 @@ class UserDto
     
     public readonly array $roles;
     
-    public function __construct(array $data)
+    public function __construct(Request $request)
     {
-        $this->userId = $data["userId"];
-        $this->userName = $data["userName"];
-        $this->password = $data["password"];
+        $this->userId = $request->request->get("userId");
+        $this->userName = $request->request->get("userName");
+        $this->password = $request->request->get("password");
         $this->roles = [];
     }
 }
