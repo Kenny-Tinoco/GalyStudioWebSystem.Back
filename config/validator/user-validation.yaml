@@ -1,0 +1,8 @@
+App\Dto\UserDto:
+    properties:
+        userId:
+            - NotBlank: ~
+        userName:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
