@@ -5,7 +5,7 @@ namespace App\ApiController;
 use App\Http\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class BaseResource
+class BaseApiController
 {
     public function createResponse(array $data, int $status = JsonResponse::HTTP_OK) : ApiResponse
     {

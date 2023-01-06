@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Common;
+namespace App\BusinnesController\Common;
 
 use App\Dao\Repository\UserRepository;
 use App\Dto\UserDto;
@@ -32,7 +32,6 @@ class LoginController
         return true;
 	}
  
-
 	public function createAccount(UserDto $userDto) : bool
 	{
         return true;

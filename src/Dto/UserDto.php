@@ -2,7 +2,7 @@
 
 namespace App\Dto;
 
-use App\Http\Dto\RequestDto;
+use App\Http\Request\RequestDto;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserDto implements RequestDto

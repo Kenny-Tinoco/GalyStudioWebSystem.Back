@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http;
+namespace App\Http\Request;
 
 use App\Exception\BadRequestHttpException;
-use App\Http\Dto\RequestDto;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;

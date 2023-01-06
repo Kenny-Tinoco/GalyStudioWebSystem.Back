@@ -2,13 +2,13 @@
 
 namespace App\ApiController;
 
-use App\Controller\Common\LoginController;
+use App\BusinnesController\Common\LoginController;
 use App\Dto\UserDto;
 use App\Http\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class LoginResource extends BaseResource
+class LoginApiController extends BaseApiController
 {
     private LoginController $loginController;
     

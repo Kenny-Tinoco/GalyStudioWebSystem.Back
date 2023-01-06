@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace App\Http\Request;
 
 use Symfony\Component\HttpFoundation\InputBag;
 use Symfony\Component\HttpFoundation\Request;
