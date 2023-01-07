@@ -20,4 +20,4 @@ services:
 
     App\Exception\JsonTransformerExceptionListener:
         tags:
-            - {name: kernel.event_listener, event: kernel.exception, method: onKernelExecption, priority: 100}
+            - {name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100}

@@ -1,9 +1,9 @@
-app.loginApiController.login:
-  path: /login
+app.users.login:
+  path: /users
   controller: App\ApiController\LoginApiController::login
   methods: [ GET ]
 
-app.loginApiController.createAccount:
-  path: /create-account
+app.users.createAccount:
+  path: /users
   controller: App\ApiController\LoginApiController::createAccount
   methods: [ POST ]

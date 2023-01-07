@@ -5,12 +5,13 @@ namespace App\BusinnesController\Common;
 use App\Common\SessionEntity;
 use App\Dao\Repository\UserRepository;
 use App\Dto\Input\UserInputDto;
+use App\Dto\Input\UserLoginDto;
 use App\Dto\Output\UserOutputDto;
-use App\Exception\BadRequestHttpException;
+use App\Entity\UserEntity;
 
 class LoginController
 {
-    private \App\Common\SessionEntity $sessionEntity;
+    private SessionEntity $sessionEntity;
     private UserRepository $userEntities;
     
     public function __construct(UserRepository $userEntities, SessionEntity $sessionEntity)
@@ -19,17 +20,24 @@ class LoginController
         $this->sessionEntity = $sessionEntity;
     }
 
-	public function login(string $userName) : UserOutputDto
+	public function login(UserLoginDto $userLoginDto) : UserOutputDto
     {
-        $user = $this->userEntities->findByUsername($userName);
+        $user = $this->userEntities->findByUsername($userLoginDto->userName);
         
-        $this->sessionEntity->setUser($user);
+        if($user->verifyPassword($userLoginDto->password))
+        {
+            $this->sessionEntity->setUser($user);
+        }
         
-        return UserOutputDto::create($user);
+        return new UserOutputDto($user);
 	}
  
-	public function createAccount(UserInputDto $userDto) : bool
+	public function createAccount(UserInputDto $userDto) : UserOutputDto
 	{
-        return true;
+        $user = new UserEntity($userDto->userName, $userDto->password);
+        
+        $this->userEntities->create($user);
+        
+        return new UserOutputDto($user);
 	}
  }

@@ -10,14 +10,9 @@ class UserOutputDto
     
     public readonly string $userName;
     
-    private function __construct(string $userId, $userName)
+    public function __construct(UserEntity $userEntity)
     {
-        $this->userId = $userId;
-        $this->userName = $userName;
-    }
-    
-    public static function create(UserEntity $userEntity) : self
-    {
-        return new self($userEntity->getUserId(), $userEntity->getUserName());
+        $this->userId = $userEntity->getUserId();
+        $this->userName = $userEntity->getUserName();
     }
 }

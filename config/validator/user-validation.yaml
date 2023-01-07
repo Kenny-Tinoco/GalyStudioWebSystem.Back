@@ -1,6 +1,15 @@
-App\Dto\UserInputDto:
+App\Dto\Input\UserLoginDto:
     properties:
-        userId:
-            - NotBlank: ~
         userName:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
+
+App\Dto\Input\UserInputDto:
+    properties:
+        userName:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
+        roles:
             - NotBlank: ~

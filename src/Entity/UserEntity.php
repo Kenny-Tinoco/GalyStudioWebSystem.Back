@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Exception\IncorrectPasswordException;
 use App\Utils\UID;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -37,7 +38,12 @@ class UserEntity
 
 	public function verifyPassword(string $password) : bool
 	{
-		return $this->password == $password;
+        if($this->password != $password)
+        {
+            throw (new IncorrectPasswordException())->create($this->userName);
+        }
+        
+        return true;
 	}
     
     public function getUserId() : string

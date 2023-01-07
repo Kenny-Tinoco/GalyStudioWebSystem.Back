@@ -4,6 +4,7 @@ namespace App\ApiController;
 
 use App\BusinnesController\Common\LoginController;
 use App\Dto\Input\UserInputDto;
+use App\Dto\Input\UserLoginDto;
 use App\Http\Response\ApiResponse;
 
 class LoginApiController extends BaseApiController
@@ -15,9 +16,9 @@ class LoginApiController extends BaseApiController
         $this->loginController = $loginController;
     }
     
-    public function login(UserInputDto $userDto) : ApiResponse
+    public function login(UserLoginDto $userDto) : ApiResponse
     {
-        $userOutputDto = $this->loginController->login($userDto->userName);
+        $userOutputDto = $this->loginController->login($userDto);
         
         return $this->createResponse($userOutputDto, ApiResponse::HTTP_ACCEPTED);
     }

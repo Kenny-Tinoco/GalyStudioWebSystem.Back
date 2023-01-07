@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
 class JsonTransformerExceptionListener
 {
-    public function onKernelExecption(ExceptionEvent $event) : void
+    public function onKernelException(ExceptionEvent $event) : void
     {
         $exception = $event->getThrowable();
         
@@ -36,7 +36,8 @@ class JsonTransformerExceptionListener
     {
         return
         [
-            BadRequestHttpException::class
+            BadRequestHttpException::class,
+            IncorrectPasswordException::class
         ];
     }
     

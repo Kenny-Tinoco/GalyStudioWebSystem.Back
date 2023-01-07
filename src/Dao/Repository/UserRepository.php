@@ -8,11 +8,9 @@ use Doctrine\ORM\NoResultException;
 
 class UserRepository extends BaseRepository
 {
-    public function create(UserEntity $user) : UserEntity
+    public function create(UserEntity $user) : void
     {
         $this->saveEntity($user);
-        
-        return $user;
     }
     
 	public function findByUsername(string $userName) : UserEntity
@@ -27,7 +25,7 @@ class UserRepository extends BaseRepository
         }
         catch (NoResultException $e)
         {
-            throw new EntityNotFoundException();
+            throw (new EntityNotFoundException())->createFromElementAndClass($userName, "userName", UserEntity::class);
         }
         
         return $user;

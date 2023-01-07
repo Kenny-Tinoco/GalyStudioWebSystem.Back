@@ -4,9 +4,9 @@ namespace App\Exception;
 
 class EntityNotFoundException extends \DomainException
 {
-    public function createFromIdAndClass(string $id, string $class) : self
+    public function createFromElementAndClass(string $content, string $type, string $class) : self
     {
-        $message = 'Entity with id ['.$id.'] for class ['.$class.'] not found';
+        $message = 'Entity with '.$type.' ['.$content.'] for class ['.$class.'] not found';
         return new self(\sprintf($message));
     }
 }
