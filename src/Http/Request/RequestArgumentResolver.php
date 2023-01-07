@@ -19,18 +19,6 @@ class RequestArgumentResolver implements ValueResolverInterface
         $this -> requestBodyTransformer = $requestBodyTransformer;
     }
     
-    public function supports(Request $request, ArgumentMetadata $argument): bool
-    {
-        $reflectionClass = new \ReflectionClass($argument -> getType());
-        
-        if ($reflectionClass -> implementsInterface(RequestDto::class))
-        {
-            return true;
-        }
-        
-        return false;
-    }
-    
     public function resolve(Request $request, ArgumentMetadata $argument): \Generator
     {
         $class = $argument -> getType();

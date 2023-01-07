@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Common;
+
+use App\Entity\UserEntity;
 
 class SessionEntity
 {

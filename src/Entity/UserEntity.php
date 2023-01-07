@@ -49,14 +49,4 @@ class UserEntity
     {
         return $this->roles;
     }
-    
-    public function toArray() : array
-    {
-        return
-        [
-            'userId' => $this->userId,
-            'userName' => $this->userName,
-            'password' => $this->password
-        ];
-    }
 }

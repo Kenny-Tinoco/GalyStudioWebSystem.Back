@@ -3,38 +3,33 @@
 namespace App\ApiController;
 
 use App\BusinnesController\Common\LoginController;
-use App\Dto\UserDto;
+use App\Dto\Input\UserInputDto;
 use App\Http\Response\ApiResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginApiController extends BaseApiController
 {
     private LoginController $loginController;
     
-    public function __construct(LoginController $loginController)
+    public function __construct(LoginController $loginController, ApiResponse $ApiResponse)
     {
+        parent::__construct($ApiResponse);
+        
         $this->loginController = $loginController;
     }
     
-    public function login(Request $request) : JsonResponse
+    public function login(UserInputDto $userDto) : JsonResponse
     {
-        $data = \json_decode($request->getContent(), true);
-    
-        $result = $this->loginController->login($data['userName']);
+        $userOutputDto = $this->loginController->login($userDto->userName);
         
-        return $this->createResponse(['result' => $result], ApiResponse::HTTP_OK);
+        return $this->createResponse($userOutputDto, Response::HTTP_ACCEPTED);
     }
     
-    public function createAccount(UserDto $dto) : JsonResponse
+    public function createAccount(UserInputDto $userDto) : JsonResponse
     {
-        $result = $this->loginController->createAccount($dto);
+        $userOutputDto = $this->loginController->createAccount($userDto);
         
-        return $this->createResponse(['result ' => $result], ApiResponse::HTTP_OK);
-    }
-    
-    public function changePassword(Request $request) : JsonResponse
-    {
-        return $this->createResponse(['result ' => true], ApiResponse::HTTP_OK);
+        return $this->createResponse($userOutputDto, Response::HTTP_CREATED);
     }
 }

@@ -3,7 +3,10 @@
 namespace App\Dao\Repository;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ObjectRepository;
 
 abstract class BaseRepository
@@ -34,5 +37,28 @@ abstract class BaseRepository
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
+    }
+    
+    /**
+     * @throws NoResultException
+     */
+    
+    protected function getOneResult(AbstractQuery $query)
+    {
+        try
+        {
+            $result = $query -> getOneOrNullResult();
+            
+            if(is_null($result))
+            {
+                throw new NonUniqueResultException();
+            }
+        }
+        catch (NonUniqueResultException $e)
+        {
+            throw new NoResultException();
+        }
+        
+        return $result;
     }
 }
