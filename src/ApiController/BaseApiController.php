@@ -8,15 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BaseApiController
 {
-    private ApiResponse $apiResponse;
-    
-    public function __construct(ApiResponse $apiResponse)
+    public function createResponse(mixed $data, int $status = Response::HTTP_OK) : ApiResponse
     {
-        $this->apiResponse = $apiResponse;
-    }
-    
-    public function createResponse(mixed $data, int $status = Response::HTTP_OK) : JsonResponse
-    {
-        return $this->apiResponse->createMixed($data, $status);
+        return new ApiResponse($data, $status);
     }
 }
