@@ -1,2 +1,2 @@
-login:
+users:
   resource: 'api-routes/login-routes.yaml'
