@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Exception\IncorrectPasswordException;
+use App\Utils\Contract;
 use App\Utils\UID;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -19,6 +20,8 @@ class UserEntity
  
     public function __construct(string $userName, string $password)
     {
+        Contract::assert($userName && $password);
+        
         $this->userId = UID::generateId();
         $this->userName = $userName;
         $this->password = $password;
