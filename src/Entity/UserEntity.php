@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Exception\IncorrectPasswordException;
 use App\Utils\Contract;
 use App\Utils\UID;
+use App\Utils\Utils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -20,7 +21,8 @@ class UserEntity
  
     public function __construct(string $userName, string $password)
     {
-        Contract::assert($userName && $password);
+        Contract::assert(Utils::isValid($userName), $this::class, __LINE__);
+        Contract::assert(Utils::isValid($password), $this::class, __LINE__);
         
         $this->userId = UID::generateId();
         $this->userName = $userName;
@@ -41,7 +43,9 @@ class UserEntity
 
 	public function verifyPassword(string $password) : bool
 	{
-        if($this->password != $password)
+        Contract::assert(Utils::isValid($password), $this::class, __LINE__);
+        
+        if ($this->password != $password)
         {
             throw (new IncorrectPasswordException())->create($this->userName);
         }

@@ -6,11 +6,11 @@ use App\Entity\UserEntity;
 
 class SessionEntity
 {
-	private UserEntity $user;
+	private ?UserEntity $user;
  
 	public function __construct(UserEntity $user = null)
     {
-        $this->user = $user ? : new UserEntity("", "");
+        $this->user = $user;
 	}
 
 	public function getUser() : UserEntity

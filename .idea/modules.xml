@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GalyStudioWebSystem.Back.iml" filepath="$PROJECT_DIR$/.idea/GalyStudioWebSystem.Back.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/galy-studio-web-system.back.iml" filepath="$PROJECT_DIR$/.idea/galy-studio-web-system.back.iml" />
     </modules>
   </component>
 </project>

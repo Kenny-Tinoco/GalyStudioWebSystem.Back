@@ -4,17 +4,23 @@ namespace App\Dao\Repository;
 
 use App\Entity\UserEntity;
 use App\Exception\EntityNotFoundException;
+use App\Utils\Contract;
+use App\Utils\Utils;
 use Doctrine\ORM\NoResultException;
 
 class UserRepository extends BaseRepository
 {
     public function create(UserEntity $user) : void
     {
+        Contract::assert(isset($user), $this::class, __LINE__);
+        
         $this->saveEntity($user);
     }
     
 	public function findByUsername(string $userName) : UserEntity
 	{
+        Contract::assert(Utils::isValid($userName), $this::class, __LINE__);
+        
         $queryString = 'SELECT u FROM App\Entity\UserEntity u WHERE u.userName = :userName';
         $query = $this->getEntityManager()->createQuery($queryString);
         $query->setParameter('userName', $userName);

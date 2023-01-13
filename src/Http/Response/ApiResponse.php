@@ -2,6 +2,7 @@
 
 namespace App\Http\Response;
 
+use App\Utils\Contract;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -11,6 +12,8 @@ class ApiResponse extends JsonResponse
     
     public function __construct(mixed $data, int $code = JsonResponse::HTTP_OK)
     {
+        Contract::assert(isset($data), $this::class, __LINE__);
+        
         parent::__construct($data, $code);
     }
 }
