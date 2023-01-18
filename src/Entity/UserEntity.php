@@ -21,9 +21,6 @@ class UserEntity
  
     public function __construct(string $userName, string $password)
     {
-        Contract::assert(Utils::isValid($userName), $this::class, __LINE__);
-        Contract::assert(Utils::isValid($password), $this::class, __LINE__);
-        
         $this->userId = UID::generateId();
         $this->userName = $userName;
         $this->password = $password;
@@ -43,8 +40,6 @@ class UserEntity
 
 	public function verifyPassword(string $password) : bool
 	{
-        Contract::assert(Utils::isValid($password), $this::class, __LINE__);
-        
         if ($this->password != $password)
         {
             throw (new IncorrectPasswordException())->create($this->userName);

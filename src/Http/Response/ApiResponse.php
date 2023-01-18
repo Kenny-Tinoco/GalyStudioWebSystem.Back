@@ -12,8 +12,6 @@ class ApiResponse extends JsonResponse
     
     public function __construct(mixed $data, int $code = JsonResponse::HTTP_OK)
     {
-        Contract::assert(isset($data), $this::class, __LINE__);
-        
         parent::__construct($data, $code);
     }
 }
