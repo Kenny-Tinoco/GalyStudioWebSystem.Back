@@ -13,4 +13,7 @@ jobs:
         run: composer install
 
       - name: Run phpstan
-        run: ./vendor/bin/phpstan analyse src --level 5
+        run: ./vendor/bin/phpstan analyse src tests --level 5
+
+      - name: Run phpunit
+        run: php bin/phpunit
