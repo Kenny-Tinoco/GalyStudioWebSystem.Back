@@ -26,6 +26,7 @@ class RequestArgumentResolver implements ValueResolverInterface
         $dto = new $class($request);
         
         $errors = $this -> validator -> validate($dto);
+        
         if (\count($errors) > 0)
         {
             throw new BadRequestHttpException();

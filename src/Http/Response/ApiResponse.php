@@ -2,7 +2,6 @@
 
 namespace App\Http\Response;
 
-use App\Utils\Contract;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

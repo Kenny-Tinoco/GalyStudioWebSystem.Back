@@ -22,9 +22,9 @@ class LoginController
 
 	public function login(UserLoginDto $userLoginDto) : UserOutputDto
     {
-        $user = $this->userRepository->findByUsername($userLoginDto->userName);
+        $user = $this->userRepository->findByUsername($userLoginDto->getUserName());
         
-        if($user->verifyPassword($userLoginDto->password))
+        if($user->verifyPassword($userLoginDto->getPassword()))
         {
             $this->sessionEntity->setUser($user);
         }

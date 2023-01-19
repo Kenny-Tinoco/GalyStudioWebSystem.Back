@@ -7,13 +7,23 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserLoginDto implements RequestDto
 {
-    public readonly string $userName;
+    private readonly string $userName;
     
-    public readonly string $password;
+    private readonly string $password;
     
     public function __construct(Request $request)
     {
         $this->userName = $request->request->get("userName");
         $this->password = $request->request->get("password");
+    }
+    
+    public function getUserName() : string
+    {
+        return $this->userName;
+    }
+    
+    public function getPassword() : string
+    {
+        return $this->password;
     }
 }
