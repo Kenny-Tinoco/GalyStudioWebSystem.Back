@@ -1,9 +1,9 @@
 app.users.login:
   path: /users
-  controller: App\ApiController\LoginApiController::login
+  controller: App\ApiController\LoginAction
   methods: [ GET ]
 
 app.users.createAccount:
   path: /users
-  controller: App\ApiController\LoginApiController::createAccount
+  controller: App\ApiController\CreateAccountAction
   methods: [ POST ]

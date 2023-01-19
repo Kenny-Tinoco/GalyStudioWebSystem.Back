@@ -8,8 +8,6 @@ use App\Dto\Input\UserInputDto;
 use App\Dto\Input\UserLoginDto;
 use App\Dto\Output\UserOutputDto;
 use App\Entity\UserEntity;
-use App\Utils\Contract;
-use App\Utils\Utils;
 
 class LoginController
 {
