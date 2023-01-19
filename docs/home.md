@@ -10,7 +10,7 @@
 
 # Release
 
-- [v1. release](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/wiki/v1.-Release)
+- [v1. release](./v1.-release.md)
 
 # Workflow
 

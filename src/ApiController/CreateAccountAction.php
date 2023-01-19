@@ -8,9 +8,16 @@ use App\Http\Response\ApiResponse;
 
 class CreateAccountAction extends BaseAction
 {
-    public function __invoke(UserInputDto $userDto, LoginController $loginController) : ApiResponse
+    private LoginController $loginController;
+    
+    public function __construct(LoginController $loginController)
     {
-        $userOutputDto = $loginController->createAccount($userDto);
+        $this->loginController = $loginController;
+    }
+    
+    public function __invoke(UserInputDto $userDto) : ApiResponse
+    {
+        $userOutputDto = $this->loginController->createAccount($userDto);
         
         return $this->createResponse($userOutputDto, ApiResponse::HTTP_CREATED);
     }

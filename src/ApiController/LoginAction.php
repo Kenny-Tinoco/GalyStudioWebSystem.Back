@@ -8,9 +8,16 @@ use App\Http\Response\ApiResponse;
 
 class LoginAction extends BaseAction
 {
-    public function __invoke(UserLoginDto $userDto, LoginController $loginController) : ApiResponse
+    private LoginController $loginController;
+    
+    public function __construct(LoginController $loginController)
     {
-        $userOutputDto = $loginController->login($userDto);
+        $this->loginController = $loginController;
+    }
+    
+    public function __invoke(UserLoginDto $userDto) : ApiResponse
+    {
+        $userOutputDto = $this->loginController->login($userDto);
         
         return $this->createResponse($userOutputDto, ApiResponse::HTTP_ACCEPTED);
     }

@@ -2,8 +2,6 @@
 
 namespace App\Dao\Repository;
 
-use App\Utils\Contract;
-use App\Utils\Utils;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;

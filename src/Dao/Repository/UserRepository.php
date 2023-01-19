@@ -4,8 +4,6 @@ namespace App\Dao\Repository;
 
 use App\Entity\UserEntity;
 use App\Exception\EntityNotFoundException;
-use App\Utils\Contract;
-use App\Utils\Utils;
 use Doctrine\ORM\NoResultException;
 
 class UserRepository extends BaseRepository
