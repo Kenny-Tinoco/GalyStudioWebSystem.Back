@@ -34,7 +34,7 @@ class LoginController
  
 	public function createAccount(UserInputDto $userDto) : UserOutputDto
 	{
-        $user = new UserEntity($userDto->userName, $userDto->password);
+        $user = new UserEntity($userDto->getUserName(), $userDto->getPassword());
         
         $this->userRepository->create($user);
         

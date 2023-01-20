@@ -7,16 +7,31 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserInputDto implements RequestDto
 {
-    public readonly string $userName;
+    private readonly string $userName;
     
-    public readonly string $password;
+    private readonly string $password;
     
-    public readonly string $roles;
+    private readonly string $roles;
     
     public function __construct(Request $request)
     {
         $this->userName = $request->request->get("userName");
         $this->password = $request->request->get("password");
         $this->roles = $request->request->get("roles");
+    }
+
+    public function getUserName() : string
+    {
+        return $this -> userName;
+    }
+
+    public function getPassword() : string
+    {
+        return $this -> password;
+    }
+    
+    public function getRoles() : string
+    {
+        return $this -> roles;
     }
 }
