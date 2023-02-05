@@ -9,7 +9,7 @@ use App\Utils\Utils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-class UserEntity
+class UserEntity implements UserEntityInterface
 {
 	private string $userId;
 
@@ -58,8 +58,19 @@ class UserEntity
         return $this->userId;
     }
     
-    public function getRoles() : Collection
+
+    public function eraseCredentials() : void
     {
-        return $this->roles;
+        // TODO: Implement eraseCredentials() method.
+    }
+    
+    public function getUserIdentifier(): string
+    {
+        return "";
+    }
+    
+    public function getRoles(): array
+    {
+        return [];
     }
 }

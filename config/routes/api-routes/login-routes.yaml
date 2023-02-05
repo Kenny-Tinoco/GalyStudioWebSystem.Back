@@ -3,6 +3,9 @@ app.users.login:
   controller: App\ApiController\LoginApiController::login
   methods: [ GET ]
 
+app.users.login.check:
+  path: /login-check
+
 app.users.createAccount:
   path: /users
   controller: App\ApiController\LoginApiController::createAccount

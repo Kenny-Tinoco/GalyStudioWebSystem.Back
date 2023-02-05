@@ -44,7 +44,7 @@ class LoginController
         
         $user = new UserEntity($userDto->userName, $userDto->password);
         
-        $this->userEntities->create($user);
+        $this->userEntities->save($user);
         
         return new UserOutputDto($user);
 	}
