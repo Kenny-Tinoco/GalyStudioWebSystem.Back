@@ -8,23 +8,29 @@ use App\Dto\Input\UserInputDto;
 use App\Dto\Input\UserLoginDto;
 use App\Dto\Output\UserOutputDto;
 use App\Entity\UserEntity;
+use App\Utils\Contract;
 
 class LoginController
 {
     private SessionEntity $sessionEntity;
-    private UserRepository $userRepository;
+    private UserRepository $userEntities;
     
-    public function __construct(UserRepository $userRepository, SessionEntity $sessionEntity)
+    public function __construct(UserRepository $userEntities, SessionEntity $sessionEntity)
     {
-        $this->userRepository = $userRepository;
+        Contract::assert(isset($userEntities), $this::class, __LINE__);
+        Contract::assert(isset($sessionEntity), $this::class, __LINE__);
+        
+        $this->userEntities = $userEntities;
         $this->sessionEntity = $sessionEntity;
     }
 
 	public function login(UserLoginDto $userLoginDto) : UserOutputDto
     {
-        $user = $this->userRepository->findByUsername($userLoginDto->getUserName());
+        Contract::assert(isset($userLoginDto), $this::class, __LINE__);
         
-        if($user->verifyPassword($userLoginDto->getPassword()))
+        $user = $this->userEntities->findByUsername($userLoginDto->userName);
+        
+        if($user->verifyPassword($userLoginDto->password))
         {
             $this->sessionEntity->setUser($user);
         }
@@ -34,9 +40,11 @@ class LoginController
  
 	public function createAccount(UserInputDto $userDto) : UserOutputDto
 	{
-        $user = new UserEntity($userDto->getUserName(), $userDto->getPassword());
+        Contract::assert(isset($userDto), $this::class, __LINE__);
         
-        $this->userRepository->create($user);
+        $user = new UserEntity($userDto->userName, $userDto->password);
+        
+        $this->userEntities->create($user);
         
         return new UserOutputDto($user);
 	}

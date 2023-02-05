@@ -8,7 +8,7 @@ use Doctrine\ORM\NoResultException;
 
 class UserRepository extends BaseRepository
 {
-    public function create(UserEntity $user) : void
+    public function save(UserEntity $user) : void
     {
         $this->saveEntity($user);
     }
