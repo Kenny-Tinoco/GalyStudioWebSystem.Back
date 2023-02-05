@@ -29,10 +29,7 @@ class LoginController
         
         $user = $this->userEntities->findByUsername($userLoginDto->getUserName());
         
-        if($user->verifyPassword($userLoginDto->getPassword()))
-        {
-            $this->sessionEntity->setUser($user);
-        }
+        $this->sessionEntity->setUser($user);
         
         return new UserOutputDto($user);
 	}

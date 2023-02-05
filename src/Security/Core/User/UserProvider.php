@@ -22,10 +22,26 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
     
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
+        if (!$user instanceof UserEntity)
+        {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+        }
+        
+        if(strcmp($user->getPassword(), $newHashedPassword) == 0)
+            return;
+        
+        $user->setPassword($newHashedPassword);
+        
+        $this->userRepository->save($user);
     }
     
     public function refreshUser(UserInterface $user) : UserInterface
     {
+        if (!$user instanceof UserEntity)
+        {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+        }
+        
         return $this->loadUserByIdentifier($user->getUserIdentifier());
     }
     

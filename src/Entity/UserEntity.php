@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Exception\IncorrectPasswordException;
 use App\Utils\UID;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -38,31 +37,25 @@ class UserEntity implements UserEntityInterface
 	{
         return $this->password;
 	}
-
-	public function verifyPassword(string $password) : bool
-	{
-        if ($this->password != $password)
-        {
-            throw (new IncorrectPasswordException())->create($this->userName);
-        }
-        
-        return true;
-	}
+    
+    public function setPassword(string $password) : void
+    {
+        assert(!empty($password));
+        $this -> password = $password;
+    }
     
     public function getUserId() : string
     {
         return $this->userId;
     }
     
-
     public function eraseCredentials() : void
     {
-        // TODO: Implement eraseCredentials() method.
     }
     
     public function getUserIdentifier(): string
     {
-        return "";
+        return $this->getUserName();
     }
     
     public function getRoles(): array
