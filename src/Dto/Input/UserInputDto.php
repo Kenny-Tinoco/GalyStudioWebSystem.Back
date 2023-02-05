@@ -15,6 +15,8 @@ class UserInputDto implements RequestDto
     
     public function __construct(Request $request)
     {
+        assert($request !== null);
+        
         $this->userName = $request->request->get("userName");
         $this->password = $request->request->get("password");
         $this->roles = $request->request->get("roles");

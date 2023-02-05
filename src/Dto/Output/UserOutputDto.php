@@ -12,6 +12,7 @@ class UserOutputDto
     
     public function __construct(UserEntity $userEntity)
     {
+        assert($userEntity !== null);
         $this->userId = $userEntity->getUserId();
         $this->userName = $userEntity->getUserName();
     }

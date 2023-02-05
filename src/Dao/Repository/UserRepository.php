@@ -10,11 +10,14 @@ class UserRepository extends BaseRepository
 {
     public function save(UserEntity $user) : void
     {
+        assert($user !== null);
         $this->saveEntity($user);
     }
     
 	public function findByUsername(string $userName) : UserEntity
 	{
+        assert(!empty($userName));
+        
         $queryString = 'SELECT u FROM App\Entity\UserEntity u WHERE u.userName = :userName';
         $query = $this->getEntityManager()->createQuery($queryString);
         $query->setParameter('userName', $userName);

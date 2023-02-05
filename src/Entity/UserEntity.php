@@ -3,9 +3,7 @@
 namespace App\Entity;
 
 use App\Exception\IncorrectPasswordException;
-use App\Utils\Contract;
 use App\Utils\UID;
-use App\Utils\Utils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -21,6 +19,9 @@ class UserEntity implements UserEntityInterface
  
     public function __construct(string $userName, string $password)
     {
+        assert(!empty($userName));
+        assert(!empty($password));
+        
         $this->userId = UID::generateId();
         $this->userName = $userName;
         $this->password = $password;
@@ -66,6 +67,6 @@ class UserEntity implements UserEntityInterface
     
     public function getRoles(): array
     {
-        return [];
+        return $this->roles->toArray();
     }
 }

@@ -29,12 +29,16 @@ abstract class BaseRepository
     
     protected function saveEntity(object $entity) : void
     {
+        assert($entity !== null);
+        
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
     
     protected function removeEntity(object $entity) : void
     {
+        assert($entity !== null);
+        
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
