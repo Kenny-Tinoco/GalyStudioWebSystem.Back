@@ -11,19 +11,21 @@ class UserEntity implements UserEntityInterface
 	private string $userId;
 
 	private string $userName;
+    
+    private string $plaintextPassword;
 
 	private string $password;
     
     private Collection $roles;
  
-    public function __construct(string $userName, string $password)
+    public function __construct(string $userName, string $plaintextPassword)
     {
         assert(!empty($userName));
         assert(!empty($password));
         
         $this->userId = UID::generateId();
         $this->userName = $userName;
-        $this->password = $password;
+        $this->plaintextPassword = $plaintextPassword;
         
         $this->roles = new ArrayCollection();
     }
@@ -37,6 +39,11 @@ class UserEntity implements UserEntityInterface
 	{
         return $this->password;
 	}
+    
+    public function getPlaintextPassword() : string
+    {
+        return $this->plaintextPassword;
+    }
     
     public function setPassword(string $password) : void
     {

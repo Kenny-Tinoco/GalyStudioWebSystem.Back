@@ -20,7 +20,7 @@ class LoginController
     {
         assert($userEntities !== null);
         assert($sessionEntity !== null);
-        assert( $userPasswordHasher !== null);
+        assert($userPasswordHasher !== null);
         
         $this->userEntities = $userEntities;
         $this->sessionEntity = $sessionEntity;
@@ -44,7 +44,7 @@ class LoginController
         
         $user = new UserEntity($userDto->getUserName(), $userDto->getPassword());
         
-        $hashedPassword = $this->userPasswordHasher->hashPassword($user, $user->getPassword());
+        $hashedPassword = $this->userPasswordHasher->hashPassword($user, $user->getPlaintextPassword());
         $user->setPassword($hashedPassword);
         
         $this->userEntities->save($user);
