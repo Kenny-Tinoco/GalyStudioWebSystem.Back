@@ -9,11 +9,13 @@ use App\Dto\Input\UserInputDto;
 use App\Dto\Input\UserLoginDto;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class LoginControllerTest extends TestCase
 {
     private MockObject|SessionEntity $sessionEntity;
     private MockObject|UserRepository $userRepository;
+    private MockObject|UserPasswordHasherInterface $userPasswordHasher;
     private MockObject|UserLoginDto $userLoginDto;
     private MockObject|UserInputDto $userInputDto;
     
@@ -25,10 +27,11 @@ class LoginControllerTest extends TestCase
         
         $this->sessionEntity = $this->getMockBuilder(SessionEntity::class)->disableOriginalConstructor()->getMock();
         $this->userRepository = $this->getMockBuilder(UserRepository::class)->disableOriginalConstructor()->getMock();
+        $this->userPasswordHasher = $this->getMockBuilder(UserPasswordHasherInterface::class)->disableOriginalConstructor()->getMock();
         $this->userLoginDto = $this->getMockBuilder(UserLoginDto::class)->disableOriginalConstructor()->getMock();
         $this->userInputDto = $this->getMockShort(UserInputDto::class);
         
-        $this->loginController = new LoginController($this->userRepository, $this->sessionEntity);
+        $this->loginController = new LoginController($this->userRepository, $this->sessionEntity, $this->userPasswordHasher);
     }
     
     public function testLogin() : void
