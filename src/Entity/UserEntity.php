@@ -21,7 +21,7 @@ class UserEntity implements UserEntityInterface
     public function __construct(string $userName, string $plaintextPassword)
     {
         assert(!empty($userName));
-        assert(!empty($password));
+        assert(!empty($plaintextPassword));
         
         $this->userId = UID::generateId();
         $this->userName = $userName;
