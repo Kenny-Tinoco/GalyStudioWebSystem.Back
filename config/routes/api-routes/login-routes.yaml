@@ -1,8 +1,3 @@
-app.users.login:
-  path: /users
-  controller: App\ApiController\LoginAction
-  methods: [ GET ]
-
 app.users.login.check:
   path: /login-check
 

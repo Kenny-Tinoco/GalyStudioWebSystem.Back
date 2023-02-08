@@ -29,11 +29,11 @@ class UserInputDto implements RequestDto
 
     public function getPassword() : string
     {
-        return $this -> password;
+        return $this->password;
     }
     
     public function getRoles() : string
     {
-        return $this -> roles;
+        return $this->roles;
     }
 }
