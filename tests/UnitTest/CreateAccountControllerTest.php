@@ -41,8 +41,8 @@ class CreateAccountControllerTest extends TestCase
     
     public function testCreateAccount() : void
     {
-        $this->userInputDto->method('getUserName')->willReturn('Prueba1');
-        $this->userInputDto->method('getPassword')->willReturn('ContraseñaPrueba1');
+        $this->userInputDto->method('getUserName')->willReturn('test-username');
+        $this->userInputDto->method('getPassword')->willReturn('test-password');
     
         $this->encoderService
             ->expects($this->exactly(1))
@@ -58,7 +58,7 @@ class CreateAccountControllerTest extends TestCase
             ->expects($this->exactly(1))
             ->method('create')
             ->with($this->isInstanceOf(UserEntity::class))
-            ->willReturn('my-json-web-token');
+            ->willReturn('the-json-web-token');
     
         $result = $this->createAccountController->createAccount($this->userInputDto);
         
