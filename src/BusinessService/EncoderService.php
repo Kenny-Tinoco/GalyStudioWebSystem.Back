@@ -2,7 +2,6 @@
 
 namespace App\BusinessService;
 
-use App\Entity\UserEntity;
 use App\Entity\UserEntityInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -25,7 +24,7 @@ class EncoderService implements EncoderServiceInterface
         return $this->userPasswordHasher->isPasswordValid($user, $password);
     }
     
-    public function encodeUserPassword(UserEntity $user) : void
+    public function encodeUserPassword(UserEntityInterface $user) : void
     {
         $hashedPassword = $this->generateEncodedPassword($user, $user->getPlaintextPassword());
         $user->setPassword($hashedPassword);

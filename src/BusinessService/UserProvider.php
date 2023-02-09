@@ -3,7 +3,7 @@
 namespace App\BusinessService;
 
 use App\Dao\Repository\UserRepository;
-use App\Entity\UserEntity;
+use App\Entity\UserEntityInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -22,7 +22,7 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
     
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
-        if (!$user instanceof UserEntity)
+        if (!$user instanceof UserEntityInterface)
         {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
@@ -39,7 +39,7 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
     
     public function refreshUser(UserInterface $user) : UserInterface
     {
-        if (!$user instanceof UserEntity)
+        if (!$user instanceof UserEntityInterface)
         {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
@@ -49,7 +49,7 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
     
     public function supportsClass(string $class) : bool
     {
-        return UserEntity::class === $class;
+        return UserEntityInterface::class === $class;
     }
     
     public function loadUserByIdentifier(string $userName): UserInterface

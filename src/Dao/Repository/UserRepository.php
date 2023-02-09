@@ -3,12 +3,13 @@
 namespace App\Dao\Repository;
 
 use App\Entity\UserEntity;
+use App\Entity\UserEntityInterface;
 use App\Exception\EntityNotFoundException;
 use Doctrine\ORM\NoResultException;
 
 class UserRepository extends BaseRepository
 {
-    public function save(UserEntity $user) : void
+    public function save(UserEntityInterface $user) : void
     {
         assert($user !== null);
         $this->saveEntity($user);
