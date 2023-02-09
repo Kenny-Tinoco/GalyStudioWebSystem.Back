@@ -2,7 +2,7 @@
 
 namespace App\ApiController;
 
-use App\BusinnesController\Common\CreateAccountController;
+use App\BusinessController\Common\CreateAccountController;
 use App\Dto\Input\UserInputDto;
 use App\Http\Response\ApiResponse;
 

@@ -2,8 +2,8 @@
 
 namespace App\Tests\UnitTest;
 
-use App\BusinnesController\Common\CreateAccountController;
-use App\BusinnesService\EncoderServiceInterface;
+use App\BusinessService\EncoderServiceInterface;
+use App\BusinessController\Common\CreateAccountController;
 use App\Dao\Repository\UserRepository;
 use App\Dto\Input\UserInputDto;
 use App\Entity\UserEntity;
@@ -15,7 +15,7 @@ class CreateAccountControllerTest extends TestCase
 {
     private MockObject|UserRepository $userRepository;
     private MockObject|EncoderServiceInterface $encoderService;
-    private MockObject|JWTTokenManagerInterface $JWTTokenManager;
+    private MockObject|JWTTokenManagerInterface $jwtTokenManager;
     
     private MockObject|UserInputDto $userInputDto;
     
@@ -27,7 +27,7 @@ class CreateAccountControllerTest extends TestCase
         
         $this->userRepository = $this->getMockShort(UserRepository::class);
         $this->encoderService = $this->getMockShort(EncoderServiceInterface::class);
-        $this->JWTTokenManager = $this->getMockShort(JWTTokenManagerInterface::class);
+        $this->jwtTokenManager = $this->getMockShort(JWTTokenManagerInterface::class);
         
         $this->userInputDto = $this->getMockShort(UserInputDto::class);
         
@@ -35,7 +35,7 @@ class CreateAccountControllerTest extends TestCase
         (
             $this->userRepository,
             $this->encoderService,
-            $this->JWTTokenManager
+            $this->jwtTokenManager
         );
     }
     
@@ -54,7 +54,7 @@ class CreateAccountControllerTest extends TestCase
             ->method('save')
             ->with($this->isInstanceOf(UserEntity::class));
     
-        $this->JWTTokenManager
+        $this->jwtTokenManager
             ->expects($this->exactly(1))
             ->method('create')
             ->with($this->isInstanceOf(UserEntity::class))

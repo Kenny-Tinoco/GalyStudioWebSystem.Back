@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security\Core\User;
+namespace App\BusinessService;
 
 use App\Dao\Repository\UserRepository;
 use App\Entity\UserEntity;
@@ -28,7 +28,9 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
         }
         
         if(strcmp($user->getPassword(), $newHashedPassword) == 0)
+        {
             return;
+        }
         
         $user->setPassword($newHashedPassword);
         

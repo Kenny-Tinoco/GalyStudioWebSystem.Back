@@ -1,7 +1,8 @@
 <?php
 
-namespace App\BusinnesService;
+namespace App\BusinessService;
 
+use App\Entity\UserEntity;
 use App\Entity\UserEntityInterface;
 
 interface EncoderServiceInterface
@@ -10,5 +11,5 @@ interface EncoderServiceInterface
     
     public function isPasswordValid(UserEntityInterface $user, string $password) : bool;
     
-    public function encodeUserPassword(UserEntityInterface $user) : void;
+    public function encodeUserPassword(UserEntity $user) : void;
 }

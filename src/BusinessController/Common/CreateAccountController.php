@@ -1,36 +1,29 @@
 <?php
 
-namespace App\BusinnesController\Common;
+namespace App\BusinessController\Common;
 
-use App\BusinnesService\EncoderServiceInterface;
+use App\BusinessService\EncoderServiceInterface;
 use App\Dao\Repository\UserRepository;
 use App\Dto\Input\UserInputDto;
 use App\Dto\Output\CreateAccountOutputDto;
 use App\Entity\UserEntity;
-use Exception;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
-use function PHPUnit\Framework\throwException;
 
 class CreateAccountController
 {
     private UserRepository $userRepository;
     private EncoderServiceInterface $encoderService;
-    private JWTTokenManagerInterface $JWTTokenManager;
+    private JWTTokenManagerInterface $jwtTokenManager;
     
-    public function __construct
-    (
-        UserRepository $userRepository,
-        EncoderServiceInterface $encoderService,
-        JWTTokenManagerInterface $JWTTokenManager
-    )
+    public function __construct( UserRepository $userRepository, EncoderServiceInterface $encoderService, JWTTokenManagerInterface $jwtTokenManager)
     {
         assert($userRepository !== null);
         assert($encoderService !== null);
-        assert($JWTTokenManager !== null);
+        assert($jwtTokenManager !== null);
         
         $this->userRepository = $userRepository;
         $this->encoderService = $encoderService;
-        $this->JWTTokenManager = $JWTTokenManager;
+        $this->jwtTokenManager = $jwtTokenManager;
     }
  
 	public function createAccount(UserInputDto $userDto) : CreateAccountOutputDto
@@ -41,6 +34,6 @@ class CreateAccountController
         $this->encoderService->encodeUserPassword($user);
         $this->userRepository->save($user);
         
-        return new CreateAccountOutputDto($this->JWTTokenManager->create($user));
+        return new CreateAccountOutputDto($this->jwtTokenManager->create($user));
 	}
  }

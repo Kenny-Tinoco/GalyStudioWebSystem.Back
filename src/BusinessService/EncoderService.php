@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BusinnesService;
+namespace App\BusinessService;
 
 use App\Entity\UserEntity;
 use App\Entity\UserEntityInterface;
@@ -25,11 +25,8 @@ class EncoderService implements EncoderServiceInterface
         return $this->userPasswordHasher->isPasswordValid($user, $password);
     }
     
-    public function encodeUserPassword(UserEntityInterface $user) : void
+    public function encodeUserPassword(UserEntity $user) : void
     {
-        if(!$user instanceof UserEntity)
-            return;
-        
         $hashedPassword = $this->generateEncodedPassword($user, $user->getPlaintextPassword());
         $user->setPassword($hashedPassword);
     }
