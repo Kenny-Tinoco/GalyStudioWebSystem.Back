@@ -17,9 +17,5 @@ Sistema web para el control de servicios del estudio de maquillaje Galy Studio, 
 
 ## Ecosistema
 
-<!---
-Para las etiquetas: ``
---->
-
-`PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `Codacy` `PHPStan` 
-
+`PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `Codacy` `PHPStan` `PHPUnit
+` `Docker`
