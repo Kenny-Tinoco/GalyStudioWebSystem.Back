@@ -32,7 +32,8 @@ services:
 
   gsws.database:
     container_name: gsws.database
-    image: mysql:8.0
+    build:
+      context: ./docker/database
     ports:
       - '40000:3306'
     environment:

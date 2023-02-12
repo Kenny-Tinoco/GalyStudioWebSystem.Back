@@ -1,0 +1,9 @@
+parameters:
+  encoded-password: $2y$10$PxdOW00OssPUtHFuUcVSKOyUw/.DE92u5xz1/h7TrhzrrSpdpQB2e
+
+App\Entity\UserEntity:
+  user-1:
+    __construct:
+      userName: user-test-#1
+      plaintextPassword: user-test-password
+    password: <{encoded-password}>
