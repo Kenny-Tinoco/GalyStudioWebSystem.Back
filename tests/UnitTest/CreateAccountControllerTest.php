@@ -65,7 +65,7 @@ class CreateAccountControllerTest extends TestCase
         self::assertIsString($result->token);
     }
     
-    private function getMockShort(string $className): MockObject
+    private function getMockShort(string $className)
     {
         return $this->getMockBuilder($className)->disableOriginalConstructor()->getMock();
     }
