@@ -17,7 +17,7 @@ class UserInputDto implements RequestDto
     {
         assert($request !== null);
         
-        $this->userName = $request->request->get("userName");
+        $this->userName = $request->request->get("username");
         $this->password = $request->request->get("password");
         $this->roles = $request->request->get("roles");
     }
