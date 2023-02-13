@@ -2,33 +2,29 @@
 
 ## Instalación
 
-1. Install git and docker. Optionally install the PhpStorm IDE.
-2. Clone the repository on your computer, **mediante consola**:
+1. Instalar git y docker. Opcionalmente instalar el IDE PhpStorm
+2. Clonar el repositorio en tu equipo, **mediante consola**:
 ```sh
 $ git clone https://github.com/Kenny-Tinoco/galy-studio-web-system.back.git gsws
 $ cd gsws
 ```
-3. Create and initialize containers:
+3. Crear e iniciar los contenedores:
 ```sh
 gsws$ make build 
 gsws$ make init
 ```
-4. Create migrations:
+4. Crear las migraciones:
 ```sh
 gsws$ make migrations
 ```
 
-To view the *make* help, run the following command:
+Para ver la ayuda de *make*, ejecutar el siguente comando:
 ```sh
 gsws$ make
 ```
 
 
 # Welcome to the GalyStudioWebSystem.Back wiki
-
-Computer system developed for the Galy Studio makeup studio.
-
-
 
 # Domain
 
@@ -39,27 +35,28 @@ Computer system developed for the Galy Studio makeup studio.
 ### Resposabilidades
 
 **ApiController**
-* Defines the address of the resource
-* Passes the request through the DTO's to the business layer controllers (BusinessController).
+* Define la dirección del recurso
+* Traspasa la petición por medio de los DTO's a los controladores de la capa de negocio (BusinessController).
 
 **BusinessController**
-* Processes the request relying on the DAOs.
-* Creates the entities from the DTOs.
-* Manages the response of the entities. Delegates to the DTOs the creation from the entity.
-* Delegates complex processes to BusinessService
+* Procesa la petición apoyandose en los DAO's
+* Crea las entidades a partir de los DTO´s
+* Gestiona la respuesta a partir de las entidades. Delega en los DTO's la creación a partir de la entidad
+* Delega en BusinessService procesos complejos
 
 **BusinessService**
-* Services consumed by the business controllers.
+* Servicios consumidos por los controladores del negocio
 
 **Dao**
-* Manages the queries to the Database.
+* Gestiona las consultas a la Base de Datos
 
 **Entity**
-* Business logic
-* Entities present in the database.
+* Lógica del negocio
+* Entidades presentes en la Base de Datos
 
-**Dto** 
-* Model classes for data transfer between layers, both input and output.
+**Dto**
+* Clases modelo para la transferencia de datos entre capas, tanto de entrada como de salida
+
 
 # Release
 
