@@ -18,3 +18,32 @@ Sistema web para el control de servicios del estudio de maquillaje Galy Studio, 
 ## Ecosistema
 
 `PHP` `Symfony 6` `MySQL` `GitHub` `GitHub Actions` `SonarCloud` `Codacy` `PHPStan` `PHPUnit` `Docker`
+
+![](./docs/images/ecosystem.png)
+
+## Instalación
+
+1. Instalar git y docker. Opcionalmente instalar el IDE PhpStorm
+2. Clonar el repositorio en tu equipo, **mediante consola**:
+```sh
+$ git clone https://github.com/Kenny-Tinoco/galy-studio-web-system.back.git gsws
+$ cd gsws
+```
+3. Crear e iniciar los contenedores:
+```sh
+gsws$ make build 
+gsws$ make init
+```
+4. Crear las migraciones:
+```sh
+gsws$ make migrations
+```
+
+Para ver la ayuda de *make*, ejecutar el siguente comando:
+```sh
+gsws$ make
+```
+
+## Documentación 
+
+Ver [wiki](https://github.com/Kenny-Tinoco/galy-studio-web-system.back/wiki)
