@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LoginCheckTest extends FunctionalTestBase
 {
-    private const ENDPOINT1 = '/api/v1/login-check';
+    private const ENDPOINT = '/api/v1/login-check';
     
     public function testLoginCheck(): void
     {
         $payload = [ 'username' => 'user-test-#1', 'password' => 'user-test-password'];
         
-        self::$baseClient -> request(Request::METHOD_GET, self::ENDPOINT1, [], [], [], \json_encode($payload));
+        self::$baseClient -> request(Request::METHOD_GET, self::ENDPOINT, [], [], [], \json_encode($payload));
         
         $response = self::$baseClient -> getResponse();
         self::assertEquals(Response::HTTP_OK, $response -> getStatusCode());
