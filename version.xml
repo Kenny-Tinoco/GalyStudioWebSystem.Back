@@ -2,5 +2,5 @@
 <project>
     <artifactId>galy-studio-web-system.back</artifactId>
     <groupId>gsws</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-Release</version>
 </project>
