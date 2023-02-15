@@ -14,6 +14,7 @@ jobs:
 
       - name: Pull docker-compose
         run: docker-compose
+      - uses: satackey/action-docker-layer-caching@v0.0.11
 
       - name: Prepare containers
         run: make start && make composer-install
