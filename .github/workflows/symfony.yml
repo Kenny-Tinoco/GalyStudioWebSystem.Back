@@ -6,14 +6,20 @@ on:
 
 jobs:
   build:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install composer
-        run: composer install
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Run phpstan
-        run: ./vendor/bin/phpstan analyse src tests --level 5
+      - name: Pull docker-compose
+        run: docker-compose
 
-      - name: Run phpunit
-        run: php bin/phpunit ./tests/UnitTest
+      - name: Prepare containers
+        run: make start && make composer-install
+      - uses: jakejarvis/wait-action@master
+        with:
+          time: '10s'
+
+      - name: Run tests
+        run: make mkdir-migrations && make migrations-test && make generate-ssh-keys && make tests

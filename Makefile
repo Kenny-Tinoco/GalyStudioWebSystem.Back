@@ -29,23 +29,33 @@ build: ## Rebuilds all the containers
 
 prepare: ## Runs backend commands
 	$(MAKE) composer-install
-	#$(MAKE) migrations
+	$(MAKE) mkdir-migrations
+	$(MAKE)	migrations
+	$(MAKE)	migrations-test
 
 # Backend commands
 composer-install: ## Installs composer dependencies
-	U_ID=${UID} docker exec --user ${UID} -it ${DOCKER_BE} composer install --no-scripts --no-interaction --optimize-autoloader
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} composer install --no-scripts --no-interaction --optimize-autoloader
 
 be-logs: ## Tails the Symfony dev log
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} tail -f var/log/dev.log
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} tail -f var/log/dev.log
 # End backend commands
 
 ssh-be: ## ssh's into the be container
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bash
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bash
 
+.PHONY: migrations migrations-test
 migrations: ## Create migrations
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} mkdir -p migrations
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:diff
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration
+
+mkdir-migrations:
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} mkdir -p migrations
+
+migrations-test: ## Create migrations
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration --env=test
+
+generate-ssh-keys: ## Generate ssh keys in the container
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console lexik:jwt:generate-keypair --overwrite
 
 phpunit-t: ## Run PHPUnit tests
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/phpunit
@@ -53,10 +63,7 @@ phpunit-t: ## Run PHPUnit tests
 phpstan-t: ## Run PHPStan tests
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} ./vendor/bin/phpstan analyse src tests --level 5
 
-generate-ssh-keys: ## Generate ssh keys in the container
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} mkdir -p config/jwt
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} openssl genrsa -passout pass:a6b664029f48d1863f08e9aaa039f554 -out config/jwt/private.pem -aes256 4096
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} openssl rsa -pubout -passin pass:a6b664029f48d1863f08e9aaa039f554 -in config/jwt/private.pem -out config/jwt/public.pem
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} chmod 644 config/jwt/*
-
-.PHONY: migrations tests
+.PHONY: tests
+tests:
+	$(MAKE) phpstan-t
+	$(MAKE) phpunit-t
