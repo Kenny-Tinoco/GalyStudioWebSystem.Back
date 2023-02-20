@@ -48,11 +48,12 @@ ssh-be: ## ssh's into the be container
 migrations: ## Create migrations
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration
 
-mkdir-migrations:
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} mkdir -p migrations
-
 migrations-test: ## Create migrations
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration --env=test
+
+mkdir-migrations:
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} mkdir -p migrations
+
 
 generate-ssh-keys: ## Generate ssh keys in the container
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console lexik:jwt:generate-keypair --overwrite
