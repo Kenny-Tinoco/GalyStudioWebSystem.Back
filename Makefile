@@ -46,23 +46,23 @@ ssh-be: ## ssh's into the be container
 
 .PHONY: migrations migrations-test
 migrations: ## Create migrations
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration
 
 migrations-test: ## Create migrations
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration --env=test
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration --env=test
 
 mkdir-migrations:
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} mkdir -p migrations
 
 
 generate-ssh-keys: ## Generate ssh keys in the container
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console lexik:jwt:generate-keypair --overwrite
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console lexik:jwt:generate-keypair --overwrite
 
 phpunit-t: ## Run PHPUnit tests
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/phpunit --coverage-clover=coverage.xml
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/phpunit --coverage-clover=coverage.xml
 
 phpstan-t: ## Run PHPStan tests
-	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} ./vendor/bin/phpstan analyse src tests --level 5
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} ./vendor/bin/phpstan analyse src tests --level 5
 
 .PHONY: tests
 tests:
