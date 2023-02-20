@@ -15,8 +15,6 @@ class UserEntity implements UserEntityInterface
     private string $plaintextPassword;
 
 	private string $password;
-    
-    private Collection $roles;
  
     public function __construct(string $userName, string $plaintextPassword)
     {
@@ -26,8 +24,6 @@ class UserEntity implements UserEntityInterface
         $this->userId = UID::generateId();
         $this->userName = $userName;
         $this->plaintextPassword = $plaintextPassword;
-        
-        $this->roles = new ArrayCollection();
     }
     
     public function getUserName() : string
@@ -58,6 +54,8 @@ class UserEntity implements UserEntityInterface
     
     public function eraseCredentials() : void
     {
+        $this->password = "";
+        $this->plaintextPassword = "";
     }
     
     public function getUserIdentifier(): string
@@ -67,6 +65,6 @@ class UserEntity implements UserEntityInterface
     
     public function getRoles(): array
     {
-        return $this->roles->toArray();
+        return [];
     }
 }

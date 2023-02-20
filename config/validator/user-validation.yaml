@@ -21,5 +21,3 @@ App\Dto\Input\UserInputDto:
             - NotBlank: ~
         password:
             - NotBlank: ~
-        roles:
-            - NotBlank: ~

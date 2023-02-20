@@ -14,8 +14,7 @@ class CreateAccountActionTest extends FunctionalTestBase
         $payload =
             [
                 'username' => 'user-test-#2',
-                'password' => 'user-test-password',
-                'roles' => 'nothing'
+                'password' => 'user-test-password'
             ];
         
         self::$baseClient->request(Request::METHOD_POST, self::ENDPOINT, [], [], [], \json_encode($payload));
@@ -32,8 +31,7 @@ class CreateAccountActionTest extends FunctionalTestBase
         $payload =
             [
                 'username' => '',
-                'password' => 'user-test-password',
-                'roles' => ''
+                'password' => 'user-test-password'
             ];
         
         self::$baseClient->request(Request::METHOD_POST, self::ENDPOINT, [], [], [], \json_encode($payload));
@@ -48,8 +46,7 @@ class CreateAccountActionTest extends FunctionalTestBase
         $payload =
             [
                 'username' => 'user-test-#3',
-                'password' => '',
-                'roles' => ''
+                'password' => ''
             ];
         
         self::$baseClient->request(Request::METHOD_POST, self::ENDPOINT, [], [], [], \json_encode($payload));
