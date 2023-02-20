@@ -35,33 +35,33 @@ prepare: ## Runs backend commands
 
 # Backend commands
 composer-install: ## Installs composer dependencies
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} composer install --no-scripts --no-interaction --optimize-autoloader
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} composer install --no-scripts --no-interaction --optimize-autoloader
 
 be-logs: ## Tails the Symfony dev log
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} tail -f var/log/dev.log
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} tail -f var/log/dev.log
 # End backend commands
 
 ssh-be: ## ssh's into the be container
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bash
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bash
 
 .PHONY: migrations migrations-test
 migrations: ## Create migrations
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration
 
 mkdir-migrations:
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} mkdir -p migrations
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} mkdir -p migrations
 
 migrations-test: ## Create migrations
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration --env=test
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console doctrine:migrations:migrate -n --allow-no-migration --env=test
 
 generate-ssh-keys: ## Generate ssh keys in the container
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console lexik:jwt:generate-keypair --overwrite
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/console lexik:jwt:generate-keypair --overwrite
 
 phpunit-t: ## Run PHPUnit tests
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/phpunit
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bin/phpunit --coverage-clover=coverage.xml
 
 phpstan-t: ## Run PHPStan tests
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} ./vendor/bin/phpstan analyse src tests --level 5
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} ./vendor/bin/phpstan analyse src tests --level 5
 
 .PHONY: tests
 tests:
