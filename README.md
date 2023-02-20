@@ -11,6 +11,8 @@
 ![DevOps](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/test-sonarcloud.yml/badge.svg)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2ff2ef66025b4f30998ee56f2eab927f)](https://www.codacy.com/gh/Kenny-Tinoco/galy-studio-web-system.back/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kenny-Tinoco/galy-studio-web-system.back&amp;utm_campaign=Badge_Grade)
 
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=Kenny-Tinoco_GalyStudioWebSystem.Back)
+
 ## Galy Studio Web System Backend
 
 Sistema web para el control de servicios del estudio de maquillaje Galy Studio, aplicación del lado del servidor.
