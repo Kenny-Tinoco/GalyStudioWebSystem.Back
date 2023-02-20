@@ -6,6 +6,7 @@
 
 ## Estado del código
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dca1975984154e9391a24412e95b0590)](https://app.codacy.com/gh/Kenny-Tinoco/galy-studio-web-system.back?utm_source=github.com&utm_medium=referral&utm_content=Kenny-Tinoco/galy-studio-web-system.back&utm_campaign=Badge_Grade_Settings)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kenny-Tinoco_GalyStudioWebSystem.Back&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Kenny-Tinoco_GalyStudioWebSystem.Back)
 ![Build](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/symfony.yml/badge.svg?branch=develop)
 ![DevOps](https://github.com/Kenny-Tinoco/GalyStudioWebSystem.Back/actions/workflows/test-sonarcloud.yml/badge.svg)
