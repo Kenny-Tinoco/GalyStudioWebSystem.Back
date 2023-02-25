@@ -5,22 +5,22 @@
 1. Install git and docker. Optionally install the PhpStorm IDE.
 2. Clone the repository on your computer, **mediante consola**:
 ```sh
-$ git clone https://github.com/Kenny-Tinoco/galy-studio-web-system.back.git gsws
-$ cd gsws
+git clone https://github.com/Kenny-Tinoco/galy-studio-web-system.back.git gsws
+cd gsws
 ```
 3. Create and initialize containers:
 ```sh
-gsws$ make build 
-gsws$ make init
+make build 
+make init
 ```
 4. Create migrations:
 ```sh
-gsws$ make migrations
+make migrations
 ```
 
 To view the *make* help, run the following command:
 ```sh
-gsws$ make
+make
 ```
 
 
@@ -34,7 +34,9 @@ Computer system developed for the Galy Studio makeup studio.
 
 # Architecture
 
-![](./images/architecture.png)
+[Design view](./design-view.md)
+
+![](./images/Architecture.png)
 
 ### Resposabilidades
 
