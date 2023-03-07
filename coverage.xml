@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678206135">
-  <project timestamp="1678206135">
+<coverage generated="1678211193">
+  <project timestamp="1678211193">
     <file name="/appdata/www/src/ApiController/BaseAction.php">
       <class name="App\ApiController\BaseAction" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>

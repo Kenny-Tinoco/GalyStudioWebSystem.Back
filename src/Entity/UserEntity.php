@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Utils\UID;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class UserEntity implements UserEntityInterface
 {
